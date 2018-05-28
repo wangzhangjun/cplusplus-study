@@ -33,7 +33,9 @@
   * [c++中继承中成员变量重名](c++-zhong-de-ji-cheng/c++-zhong-ji-cheng-zhong-cheng-yuan-bian-liang-zhong-ming.md)
   * [c++中继承中的static关键字](c++-zhong-de-ji-cheng/c++-zhong-ji-cheng-zhong-de-static-guan-jian-zi.md)
   * [c++中继承中的多继承](c++-zhong-de-ji-cheng/c++-zhong-ji-cheng-zhong-de-duo-ji-cheng.md)
+  * [c++中的多态](c++中的多态/c++中的多态.md)
+      * [c++多态中的静态联编和动态联编](c++中的多态/c++多态中的静态联编和动态联编.md)
+      * [c++虚析构函数](c++中的多态/c++虚析构函数.md)
 * [c++中的new和delete](c++-zhong-de-new-he-delete.md)
 * [c++内存模型和this指针](c++-nei-cun-mo-xing-he-this-zhi-zhen.md)
 * [c++小程序积累](c++-xiao-cheng-xu-ji-lei.md)
-
