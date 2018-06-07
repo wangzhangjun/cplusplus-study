@@ -21,7 +21,7 @@
     * [c++深拷贝和浅拷贝](c++-lei/c++-shen-kao-bei-he-qian-kao-bei.md)
     * [c++构造函数初始化列表](c++-lei/c++-gou-zao-han-shu-chu-shi-hua-lie-biao.md)
     * [c++构造函数综合案例](c++-lei/c++-gou-zao-han-shu-zong-he-an-li.md)
-    * [c++中的静态成员变量和静态成员函数](c++-lei/c++-zhong-de-jing-tai-cheng-yuan-bian-liang-he-jing-tai-cheng-yuan-han-shu.md)
+    * [c++中的静态成员变量和静态成员数](c++-lei/c++-zhong-de-jing-tai-cheng-yuan-bian-liang-he-jing-tai-cheng-yuan-han-shu.md)
     * [c++中的静态成员占的内存大小](c++-lei/c++-zhong-de-jing-tai-cheng-yuan-zhan-de-nei-cun-da-xiao.md)
 * [c++友元](c++-you-yuan/README.md)
     * [c++友元基本语法](c++-you-yuan/c++-you-yuan-ji-ben-yu-fa.md)
@@ -39,4 +39,3 @@
 * [c++中的new和delete](c++-zhong-de-new-he-delete.md)
 * [c++内存模型和this指针](c++-nei-cun-mo-xing-he-this-zhi-zhen.md)
 * [c++小程序积累](c++-xiao-cheng-xu-ji-lei.md)
-
