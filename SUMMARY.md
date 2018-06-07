@@ -36,6 +36,8 @@
 * [c++中的多态](c++中的多态/c++中的多态.md)
     * [c++多态中的静态联编和动态联编](c++中的多态/c++多态中的静态联编和动态联编.md)
     * [c++虚析构函数](c++中的多态/c++虚析构函数.md)
+    * [c++中的重载，重写，重定义](c++中的多态/c++中的重载，重写，重定义.md)
 * [c++中的new和delete](c++-zhong-de-new-he-delete.md)
 * [c++内存模型和this指针](c++-nei-cun-mo-xing-he-this-zhi-zhen.md)
 * [c++小程序积累](c++-xiao-cheng-xu-ji-lei.md)
+
