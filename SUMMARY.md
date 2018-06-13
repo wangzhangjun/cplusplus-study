@@ -40,6 +40,7 @@
     * [c++中多态的实现原理](c++中的多态/c++中多态的实现原理.md)
 * [c++中的纯虚函数](c++中的纯虚函数/c++中的纯虚函数的基本概念.md)
     * [c++中的抽象类在多继承中的应用](c++中的纯虚函数/c++中的抽象类在多继承中的应用.md)
+    * [c++中面向抽象类编程案例](c++中的纯虚函数/c++中面向抽象类编程案例.md)
 * [c++中的new和delete](c++-zhong-de-new-he-delete.md)
 * [c++内存模型和this指针](c++-nei-cun-mo-xing-he-this-zhi-zhen.md)
 * [c++小程序积累](c++-xiao-cheng-xu-ji-lei.md)
