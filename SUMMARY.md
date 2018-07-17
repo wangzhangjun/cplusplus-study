@@ -47,6 +47,7 @@
     * [c++中面向抽象类编程案例电脑组装](c++中的纯虚函数/c++中面向抽象类编程案例电脑组装.md)
 * [c++函数模板](c++函数模板/c++函数模板的基本概念.md)
     * [c++函数模板是如何实现的](c++函数模板/c++函数模板是如何实现的.md)
+* [c++类模板](c++类模板/c++类模板的基本概念.md)
 * [c++中的new和delete](c++-zhong-de-new-he-delete.md)
 * [c++内存模型和this指针](c++-nei-cun-mo-xing-he-this-zhi-zhen.md)
 * [c++小程序积累](c++-xiao-cheng-xu-ji-lei.md)
