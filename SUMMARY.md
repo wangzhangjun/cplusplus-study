@@ -65,7 +65,8 @@
     * [c++中的异常机制之实现自己的异常类](c++中的异常机制/06-c++中的异常机制之实现自己的异常类.md)
 * [c++中的new和delete](c++-zhong-de-new-he-delete.md)
 * [c++内存模型和this指针](c++-nei-cun-mo-xing-he-this-zhi-zhen.md)
-* [c++小程序积累](c++-xiao-cheng-xu-ji-lei.md)
 * [c++侯捷](c++侯捷/01-c++侯捷构造函数.md)
     * [c++侯捷](c++侯捷/02-c++侯捷参数传递和返回值.md)
+* [c++编程经验](c++编程经验/README.md)
+    * [c++编程经验](c++编程经验/01-前置引用声明.md)
 
