@@ -13,7 +13,7 @@ public:
 	virtual void printMoney() = 0;
 };
 
-class  Junior_programmer :public Programmer
+class  Junior_programmer : public Programmer
 {
 public:
 	Junior_programmer(double salary) {
@@ -41,7 +41,7 @@ private:
 	double salary;
 };
 
-class Adv_programmer :public Programmer
+class Adv_programmer : public Programmer
 {
 public:
 	Adv_programmer(double salary)
@@ -76,9 +76,6 @@ int main(void)
 	p = new Adv_programmer(20000);
 	printSalary(p);
 	delete p;
-
-
-
 
 	return 0;
 }

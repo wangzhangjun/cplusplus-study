@@ -38,7 +38,7 @@ public:
     {
         this->b = b;
     }
-    void print()  //重写
+    void print()   //重定义，父类的print被隐藏
     {
         cout<<"子类b:"<<b<<endl;
     }
@@ -48,7 +48,7 @@ private:
 };
 
 /*
-编译器认为最安全的做法是编译到⽗父类的print函数， 因为⽗父类和⼦子类肯定都有相同的print函数。
+编译器认为最安全的做法是编译到父类的print函数， 因为父类和⼦类肯定都有相同的print函数。
 */
 
 void HowToPrint1(Parent *p)
@@ -64,8 +64,11 @@ int main()
     Parent p1;
     Child c1;
 
-    HowToPrint1(&p1);
-    HowToPrint1(&c1);
+    p1.print();//父类的
+    c1.print();//子类的。
+
+    HowToPrint1(&p1);//父类的
+    HowToPrint1(&c1);//父类的
 
     HowToPrint2(p1);//还是打印父类的
     HowToPrint2(c1);//还是打印父类的
