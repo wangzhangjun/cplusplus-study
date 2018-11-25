@@ -5,14 +5,15 @@
 * 1.引用在C++中的内部实现是一个常指针
 
   ```text
-  Type& name <===> Type* const name
+  Type& name <===> Type* const name   //name不可变，这个地址不可变
   ```
 
   ```text
   #include <iostream>
   struct Teacher {
     int &a;
-  int &b; };
+    int &b;
+  };
   int main() {
     printf("sizeof(Teacher) %d\n", sizeof(Teacher)); //16
     return 0;
@@ -40,4 +41,3 @@ void func(int *const a)
 ```
 
 引用在实现上，只不过是把:间接赋值成立的三个条件的后两步和二为一. 当实参传给形参引用的时候，只不过是c++编译器帮我们程序员手工取了 一个实参地址，传给了形参引用\(常量指针\)。
-
