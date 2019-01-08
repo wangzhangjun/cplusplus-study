@@ -21,7 +21,17 @@ myPTypeFunc fp = NULL; //通过 函数指针类型 定义了 ⼀一个函数指�
 void (*myVarPFunc)(int a, int b);
 ```
 
-## 2.函数指针和函数重载的结合
+## 2.函数指针强制类型转换
+即我定义了一些函数指针，然后在内核中拿到这些一些函数的地址，把这些地址直接赋值给这个函数指针。但是这个过程可能要做一些强制类型转换
+对于函数指针的强制类型转换如下:
+```
+int(*kernel_security_inode_unlink)(struct inode *, struct dentry *);//定义了一个函数指针
+// printk(KERN_INFO "hooked unlink filename:%s\n",filename);
+kernel_security_inode_unlink = (int(*)(struct inode*, struct dentry*)) addr_security_inode_unlink;//把addr_security_inode_unlink这个地址强制转换成我定义的函数指针，赋值给他
+return kernel_security_inode_unlink(dir, dentry);
+```
+
+## 3.函数指针和函数重载的结合
 
 ```text
 /*
@@ -56,4 +66,3 @@ int main() {
     return 0;
 }
 ```
-
