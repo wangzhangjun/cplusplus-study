@@ -1,0 +1,3 @@
+/Users/zhjwang/Study/myrepo/cPlusPlusStrengthenBook/c++测试驱动开发/demo1/CMakeFiles/rebuild_cache.dir
+/Users/zhjwang/Study/myrepo/cPlusPlusStrengthenBook/c++测试驱动开发/demo1/CMakeFiles/edit_cache.dir
+/Users/zhjwang/Study/myrepo/cPlusPlusStrengthenBook/c++测试驱动开发/demo1/CMakeFiles/test.dir
