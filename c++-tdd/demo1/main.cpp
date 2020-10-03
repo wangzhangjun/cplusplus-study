@@ -3,11 +3,12 @@
 #include <numeric>
 #include <vector>
 // 测试集为 MyTest，测试案例为 Sum
-TEST(MyTest, Sum)
+TEST(MyTest, ShouldAddTwoOperands)
 {
-    std::vector<int> vec{1, 2, 3, 4, 5};
-    int sum = std::accumulate(vec.begin(), vec.end(), 0);
-    EXPECT_EQ(sum, 15);
+    ASSERT_EQ(2, 1 + 1);
+    ASSERT_NE(2, 1 + 1);
+    std::cout << "123" << std::endl;
+    EXPECT_TRUE((1 + 1 == 2));
 }
 int main(int argc, char *argv[])
 {
