@@ -3,6 +3,20 @@
 #include <stdexcept>
 #include "Librarian.h"
 
+//test fixture
+class bookSpec : public testing::Test
+{
+public:
+    Librarian librarian;
+};
+
+TEST_F(bookSpec, ShouldIncreaseBookCountOnStore0)
+{
+    ASSERT_EQ(1, librarian.store("C++ Primer"));
+    ASSERT_EQ(2, librarian.store("The C++ Programming Language"));
+    ASSERT_EQ(3, librarian.store("Thinking in Java"));
+}
+
 TEST(Librarian, ShouldIncreaseBookCountOnStore)
 {
     Librarian librarian;
