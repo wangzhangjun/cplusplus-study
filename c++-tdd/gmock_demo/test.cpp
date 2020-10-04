@@ -58,7 +58,7 @@ TEST(MyDBTest, LoginTest)
     MockDB mdb;
     MyDatabase db(mdb);
     EXPECT_CALL(mdb, login("Terminator", "I'm Back"))
-        .Times(1)
+        .Times(1) //调用几次
         .WillOnce(::testing::Return(true));
     // Act
     int retValue = db.Init("Terminator", "I'm Back");
