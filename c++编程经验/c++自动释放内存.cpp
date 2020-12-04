@@ -2,6 +2,7 @@
 #include <stdlib.h>
 
 //g++ --std=c++11  c++自动释放内存.cpp
+//利用局部对象出作用域的时候会默认的调用析构函数，提前把释放函数注册好，就会自动释放了。要注意需要在分配内存后，声明一个auto_destroyer的对象
 template<typename T>
 class auto_destroyer {
     typedef void (*Action)(T);
