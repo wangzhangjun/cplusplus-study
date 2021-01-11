@@ -2,7 +2,7 @@
 
 ## 1.浅拷贝
 
-```text
+```
 #include "iostream"
 using namespace std;
 class Name
@@ -31,17 +31,16 @@ private:
 void playObj()
 {
     Name obj1("obj1...");
-    Name obj2 = obj1; //  等哈操作，是一个浅拷贝,会调用默认的拷贝构造函数，浅拷贝
+    Name obj2 = obj1; //等号操作，是一个浅拷贝,会调用默认的拷贝构造函数，浅拷贝
     cout<<"业务操作"<<endl;
 }
 void main()
 {
    playObj();
-    system("pause");
 }
 ```
 
-谁先初始化，谁后析构 。 当第二次析构的时候，程序挂掉了。以下为对应的内存模型. ![](../.gitbook/assets/markdown-img-paste-20180520213219876.png)
+谁先初始化，谁后析构。当第二次析构的时候，程序挂掉了。以下为对应的内存模型. ![](../.gitbook/assets/markdown-img-paste-20180520213219876.png)
 
 ## 2.解决方案，深拷贝
 
@@ -91,4 +90,3 @@ void main()
     system("pause");
 }
 ```
-
