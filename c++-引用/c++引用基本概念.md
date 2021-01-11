@@ -62,7 +62,8 @@ void printfT(Teacher *pT)
 {
     cout<< pT->age <<endl;
 }
-//pT是t1的别名 ,相当于修改了t1 void printfT2(Teacher &pT)
+//pT是t1的别名 ,相当于修改了t1
+void printfT2(Teacher &pT)
 {
     pT.age = 33;
     cout<<pT.age<<endl;
