@@ -74,7 +74,6 @@ int main(void)
 ```
 
 ## 3.当一个函数返回引用时，这个函数可以当左值
-
 ```
 #include <iostream>
 using namespace std;
@@ -89,6 +88,15 @@ int& func2()
     static int a2 = 10;
     return a2;
 }
+
+int *j2()
+{
+    static int a = 10;
+    a++;
+    printf("a:%d \n", a);
+    return &a;
+}
+
 int main(void)
 {
   //函数当右值
@@ -97,10 +105,13 @@ int main(void)
   int c2 = func2(); //函数返回值是一个引⽤,并且当右值
   cout << "c2 = " << c2 <<endl;//10
   //函数当左值
-  //func1() = 100; //error
-  func2() = 100; //函数返回值是⼀个引⽤用,并且当左值
+  //func1() = 100; //error，因为是10 = 100肯定是错误的
+  func2() = 100; //函数返回值是⼀个引⽤用,并且当左值。编译器帮我们打造了环境
   c2 = func2();
   cout << "c2 = " << c2 <<endl;//100
+
+  *(j2()) = 200; //相当于我们程序员手工的打造 做左值的条件
+
   return 0;
 }
 ```
