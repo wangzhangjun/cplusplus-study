@@ -43,7 +43,7 @@ int main() {
 
 对C语言中结构体的操作，都是通过外部函数来实现的。比如
 
-```text
+```
 void init(Date &d);
 void print(Date & d);
 bool isLeapYear(Date & d);
@@ -53,18 +53,20 @@ bool isLeapYear(Date & d);
 
 **struct 中所有行为和属性都是 public 的\(默认\)。C++中的 class 可以指定行 为和属性的访问方式。** ![](../.gitbook/assets/markdown-img-paste-20180520180501335.png) 比如我们用 struct 封装的类,即知其接口,又可以直接访问其内部数据,这样 却没有达到信息隐蔽的功效。而 class 则提供了这样的功能,屏蔽内部数据,对外 开放接口。
 
-```text
+```
 #include <iostream>
 using namespace std;
 class Date
-{ public:
+{
+public:
     void init(Date &d);
     void print(Date & d);
     bool isLeapYear(Date & d);
 private:
     int year;
 int month;
-int day; };
+int day;
+};
 void Date::init(Date &d)
 {
     cout<<"year,month,day:"<<endl;
@@ -93,4 +95,3 @@ int main() {
     return 0;
 }
 ```
-
