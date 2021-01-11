@@ -55,7 +55,7 @@ int main(void)
 using namespace std;
 
 class Point;
-//前向声明,是⼀一种不完全型声明,即只需提供类名(⽆无需提供类实现)即可。仅可⽤用 于声明指针和引 ⽤用。
+//前向声明,是⼀一种不完全型声明,即只需提供类名(⽆无需提供类实现)即可。仅可⽤用 于声明指针和引用。
 class ManagerPoint
 {
     public:

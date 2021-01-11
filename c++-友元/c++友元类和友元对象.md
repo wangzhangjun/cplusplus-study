@@ -22,7 +22,8 @@ class A {
         {
         }
     private:
-        int x ,y; friend Class B;
+        int x ,y;
+        friend Class B;
 }
 class B {
     public:
@@ -31,4 +32,3 @@ class B {
         }
 }
 ```
-
