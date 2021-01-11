@@ -112,6 +112,7 @@ void main()
 using namespace std;
 class Location
 {
+public:
 //带参数的构造函数
 Location( int xx = 0 , int yy = 0 ) {
             X = xx ;
@@ -138,18 +139,20 @@ private :
   int X;
   int Y;
 };
-/g函数 返回一个元素
+//g函数 返回一个元素
 //结论1 : 函数的返回值是⼀个元素 (复杂类型的), 返回的是⼀个新的匿名对象(所以会调⽤用匿名对象类的copy构造函数)
 //结论2: 有关匿名对象的去和留
 //如果⽤匿名对象初始化另外⼀个同类型的对象, 匿名对象转成有名对象
 //如果用匿名对象赋值给另外⼀个同类型的对象, 匿名对象被析构
 //
 //设计编译器的⼤大⽜牛们: //我就给你返回⼀一个新对象(没有名字 匿名对象)
+
 Location g()
 {
     Location temp(1, 2);
     return temp;
 }
+
 void test1()
 {
   g();
@@ -167,7 +170,7 @@ void test3()
 {
     //⽤匿名对象 赋值给 m2后, 匿名对象被析构
     Location m2(1, 2);
-    m2 = g();
+    m2 = g();  //=浅拷贝，不会调用拷贝构造函数
     printf("因为用匿名对象=给m2, 匿名对象被析构\n");
     cout<<m2.GetX()<<endl;;
 }
