@@ -44,10 +44,14 @@ void FreeTeacher(Teacher *pT1)
     }
     free(pT1);
 }
+
 int main(void)
 {
     Teacher *pT1 = NULL;
-    //1 c语⾔言中的二级指针 getTeacher(&pT1); cout<<"age:"<<pT1->age<<endl; FreeTeacher(pT1);
+    //1 c语⾔言中的二级指针
+    getTeacher(&pT1);
+    cout<<"age:"<<pT1->age<<endl;
+    FreeTeacher(pT1);
     //2 c++中的引⽤用 (指针的引⽤用)
     //引⽤用的本质 间接赋值后2个条件 让c++编译器帮我们程序员做了。
     getTeacher2(pT1);
