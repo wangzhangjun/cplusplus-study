@@ -8,7 +8,7 @@ struct Teacher
     char name[64];
     int age ;
 };
-//在被调⽤用函数 获取资源
+//在被调⽤函数获取资源
 int getTeacher(Teacher **p) {
    Teacher *tmp = NULL;
    if (p == NULL)
@@ -25,7 +25,7 @@ int getTeacher(Teacher **p) {
      return 0;
 }
 
-//指针的引⽤用 做函数参数
+//指针的引⽤做函数参数
 int getTeacher2(Teacher* &myp) {
   //给myp赋值 相当于给main函数中的pT1赋值
   myp = (Teacher *)malloc(sizeof(Teacher));
@@ -52,12 +52,11 @@ int main(void)
     getTeacher(&pT1);
     cout<<"age:"<<pT1->age<<endl;
     FreeTeacher(pT1);
-    //2 c++中的引⽤用 (指针的引⽤用)
-    //引⽤用的本质 间接赋值后2个条件 让c++编译器帮我们程序员做了。
+    //2 c++中的引⽤ (指针的引用)
+    //引用的本质 间接赋值后2个条件 让c++编译器帮我们程序员做了。
     getTeacher2(pT1);
     cout<<"age:"<<pT1->age<<endl;
     FreeTeacher(pT1);
-
     return 0;
 }
 ```
