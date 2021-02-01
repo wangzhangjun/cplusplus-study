@@ -4,7 +4,7 @@
 
 const 引用有较多使用。它可以防止对象的值被随意修改。因而具有一 些特性。
 
-* 1.const 对象的引用必须是 const 的,将普通引用绑定到 const 对象是不 合法的。这个原因比较简单。既然对象是 const 的,表示不能被修改,引用当然 也不 能修改,必须使用 const 引用。实际上,
+* 1.const 对象的引用必须是 const 的,将普通引用绑定到 const 对象是不合法的。这个原因比较简单。既然对象是 const 的,表示不能被修改,引用当然 也不 能修改,必须使用 const 引用。实际上,
 
   ```
   const int a=1;
@@ -24,15 +24,16 @@ const 引用有较多使用。它可以防止对象的值被随意修改。因�
 using namespace std;
 int main(void)
 {
-//普通引用
-int a = 10;
-int &b = a;
-cout << "b = " << b << endl;
-//常引⽤
-int x = 20;
-const int &y = x; //y = 21;
-//常引⽤是限制变量为只读 不能通过y去修改x了 //error
-return 0;
+    //普通引用
+    int a = 10;
+    int &b = a;
+    cout << "b = " << b << endl;
+    //常引⽤
+    int x = 20;
+    const int &y = x;
+    //y = 21;//常引⽤是限制变量为只读 不能通过y去修改x了 //error
+    return 0;
+}
 ```
 
 ## 2.const引用的原理
@@ -62,7 +63,7 @@ int main(void)
   const int &y1 = x1; //用x1变量去初始化 常引⽤
   //2> 引用字面量 初始化常量引⽤
   const int a = 40; //c++编译器把a放在符号表中
-  //int &m = 41; //error , 普通引⽤ 用一个字⾯面量 请问字⾯面量有没有内存地址?看下面结论
+  //int &m = 41; //error , 普通引⽤ 用一个字⾯面量 请问字⾯量有没有内存地址?看下面结论
   const int &m = 43; //c++编译器 会分配内存空间 // int temp = 43
   return 0;
 }
@@ -99,10 +100,10 @@ int main(void)
 
 ## 5.结论
 
-```  
+```
 结论:
-1)const int & e 相当于 const int * const e
-2)普通引用 相当于 int *const e
-3)当使用常量(字面量)对const引用进行初始化时，C++编译器会为常量值分配空间，并将引用名作为这段空间的别名
+1)const int &e 相当于 const int* const e
+2)普通引用相当于 int* const e
+3)当使用常量(字面量,例如const int &m = 43)对const引用进行初始化时，C++编译器会为常量值分配空间，并将引用名作为这段空间的别名
 4)使用字面量对const引用初始化后，将生成一个只读变量
 ```
