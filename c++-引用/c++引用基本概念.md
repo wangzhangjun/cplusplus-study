@@ -93,7 +93,7 @@ int main(void)
 2\)引用相对于指针来说具有更好的可读性和实用性
 
 ```
-void swap(int a, int b); //⽆无法实现两数据的交换
+void swap(int a, int b); //⽆法实现两数据的交换
 void swap(int *p, int *q); //开辟了两个指针空间实现交换
 ```
 
