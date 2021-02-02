@@ -44,14 +44,14 @@ int main() {
 
 ## 2.当static变量定义在Private的时候，就不能在类的外部使用了，这时候就需要使用静态函数了。
 
-```text
+```
 //声明
 static 函数声明
 //调⽤
 类名::函数调⽤用 类对象.函数调⽤用
 ```
 
-```text
+```
 #include <iostream>
 using namespace std;
 class Student
@@ -88,7 +88,7 @@ int main() {
         stu[i].total();
       }
       cout<<Student::average()<<endl;
-      return 0;     
+      return 0;
 }
 ```
 
