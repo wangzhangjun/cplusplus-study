@@ -65,10 +65,22 @@ void main03() {
     std::cout << buf1 <<std::endl;
 }
 
+//拼接
+void main04()
+{
+    std::string s1 = "aa";
+    std::string s2 = "bbb";
+    std::string s3 = s1 + s2;
+    std::string s4 = s1.append(s3);
+    std::cout << s3 << std::endl;
+    std::cout << s4 << std::endl;
+}
+
 int main(){
 //    main01();
 //    main02();
-    main03();
+//    main03();
+    main04();
     std::cout << "hello world" << std::endl;
     return 0;
 }
