@@ -117,12 +117,36 @@ void main05()
     std::cout << "replace大写:" << s1 << std::endl;
 }
 
+//区间删除和插入
+/*
+ * 1. string &insert(int pos, const char *s); //前两个函数在pos位置插入字符串s
+ * 2. string &insert(int pos, const string &s);//前两个函数在pos位置插入字符串s
+ * 3. string &insert(int pos, int n, char c);  //在pos位置 插入n个字符c
+ * 4. string &erase(int pos=0, int n=npos);  //删除pos开始的n个字符，返回修改后的字符串
+ * */
+void main06()
+{
+    std::string s1 = "wzj hell0 wzj 111 wzj 222 wzj 333";
+    std::string::iterator it = find(s1.begin(), s1.end(), 'w');
+    if(it != s1.end()){
+        s1.erase(it);  //找到第一个w删除
+    }
+    std::cout << "erase : " << s1 << std::endl;
+
+    s1.erase(s1.begin(), s1.end()); //全部删除整个字符串
+    std::cout << s1 << std::endl;
+
+    s1.insert(0,"AA");
+    std::cout << s1 << std::endl;
+}
+
 int main(){
 //    main01();
 //    main02();
 //    main03();
 //    main04();
-    main05();
+//    main05();
+    main06();
     std::cout << "hello world" << std::endl;
     return 0;
 }
