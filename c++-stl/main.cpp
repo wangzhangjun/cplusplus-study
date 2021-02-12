@@ -59,7 +59,7 @@ void vectorTestPoint() {
     }
 }
 
-int main() {
+int main00() {
 //    vectortest();
     //vectortestStruct();
     vectorTestPoint();
