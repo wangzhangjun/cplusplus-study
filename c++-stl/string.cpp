@@ -76,7 +76,17 @@ void main04()
     std::cout << s4 << std::endl;
 }
 
-//查找
+//查找替换
+/*
+ * 1. int find(char c,int pos=0) const;  //从pos开始查找字符c在当前字符串的位置
+ * 2. int find(const char *s, int pos=0) const;  //从pos开始查找字符串s在当前字符串的位置
+ * 3. int find(const string &s, int pos=0) const;  //从pos开始查找字符串s在当前字符串中的位置
+ * 如果找不到就返回-1
+ * 1. int rfind(char c, int pos=npos) const;   //从pos开始从后向前查找字符c在当前字符串中的位置
+ * 2. int rfind(const char *s, int pos=npos) const;
+ * 3. int rfind(const string &s, int pos=npos) const;
+ * r表示return，反向查找。找不到就返回-1
+ * */
 void main05()
 {
     std::string s1 = "wzj hell0 wzj 111 wzj 222 wzj 333";
