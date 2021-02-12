@@ -86,6 +86,9 @@
 		<Unit filename="/Users/zhjwang/works/study/cplusplus-study/c++-stl/string.cpp">
 			<Option target="c___stl"/>
 		</Unit>
+		<Unit filename="/Users/zhjwang/works/study/cplusplus-study/c++-stl/test_Vector.cpp">
+			<Option target="c___stl"/>
+		</Unit>
 		<Unit filename="/Users/zhjwang/works/study/cplusplus-study/c++-stl/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

@@ -157,7 +157,7 @@ void main07()
     std::cout << s3 << std::endl;
 }
 
-int main(){
+int main08(){
 //    main01();
 //    main02();
 //    main03();
