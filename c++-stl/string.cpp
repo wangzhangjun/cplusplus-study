@@ -49,12 +49,26 @@ void main02()
         std::cout << s1.at(i) ;
     }
     std::cout << std::endl;
-
-
 }
+
+//字符指针和string的转换
+void main03() {
+    std::string s1 = "aaabbb";
+    //c_str返回一个以'\0'结尾的字符串的首地址
+    printf("s1:%s\n", s1.c_str());  //s1 => char *
+
+    //s1的内容copy到buf中
+    //把当前串中以pos开始的n个字符拷贝到以s为起始位置的字符数组中，
+    //返回实际拷贝的数目。注意要保证s所指向的空间足够大以容纳当前字符串，不然会越界。
+    char buf1[128] = {0};
+    s1.copy(buf1,3,0);  //只拷贝3个字符，不会加\0
+    std::cout << buf1 <<std::endl;
+}
+
 int main(){
 //    main01();
-    main02();
+//    main02();
+    main03();
     std::cout << "hello world" << std::endl;
     return 0;
 }
