@@ -76,11 +76,43 @@ void main04()
     std::cout << s4 << std::endl;
 }
 
+//查找
+void main05()
+{
+    std::string s1 = "wzj hell0 wzj 111 wzj 222 wzj 333";
+    size_t  index = s1.find("wzj",0);
+    std::cout << index << std::endl;  //0
+
+    //求wzj出现的次数
+    size_t  offindex = s1.find("wzj", 0);
+    while(offindex != std::string::npos)
+    {
+        std::cout << "在下标index:" << offindex << "找到wzj\n";
+        offindex = offindex + 1;
+        offindex = s1.find("wzj", offindex);
+    }
+    //替换
+    s1.replace(0,3,"zxn"); //zxn hell0 wzj 111 wzj 222 wzj 333
+    std::cout << "replace:" << s1 << std::endl;
+
+    //替换大小写
+    offindex = s1.find("wzj", 0);
+    while(offindex != std::string::npos)
+    {
+        std::cout << "在下标index:" << offindex << "找到wzj\n";
+        s1.replace(offindex,3,"WZJ");
+        offindex = offindex + 1;
+        offindex = s1.find("wzj", offindex);
+    }
+    std::cout << "replace大写:" << s1 << std::endl;
+}
+
 int main(){
 //    main01();
 //    main02();
 //    main03();
-    main04();
+//    main04();
+    main05();
     std::cout << "hello world" << std::endl;
     return 0;
 }
