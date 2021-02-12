@@ -21,8 +21,35 @@ void main01()
     std::cout << s2 << std::endl;
     std::cout << s3 << std::endl;
 }
+//遍历
+void main02()
+{
+    std::string s1 = "abcdef";
+    std::cout << "数组方式：" << std::endl;
+    //数组方式
+    for(int i = 0; i < s1.length(); i++) {
+        std::cout << s1[i] ;
+    }
+    std::cout << std::endl;
+    std::cout << "迭代器方式：" << std::endl;
+    //迭代器
+    for(std::string::iterator it = s1.begin(); it != s1.end(); ++it) {
+        std::cout << *it ;
+    }
+    std::cout << std::endl;
+    //at方式
+    std::cout << "at方式：" << std::endl;
+    //at方式
+    for(int i = 0; i < s1.length(); i++) {
+        std::cout << s1.at(i) ;
+    }
+    std::cout << std::endl;
+
+
+}
 int main(){
-    main01();
+//    main01();
+    main02();
     std::cout << "hello world" << std::endl;
     return 0;
 }
