@@ -137,7 +137,24 @@ void main06()
     std::cout << s1 << std::endl;
 
     s1.insert(0,"AA");
+    s1.insert(s1.length(),"bbb");
     std::cout << s1 << std::endl;
+}
+
+//算法
+void main07()
+{
+    std::string s2 = "AAAbbb";
+    /*transform的最后一个参数可以是：
+     * 1.函数的入口地址
+     * 2.函数对象
+     * 3.预定义的函数对象
+     * */
+    transform(s2.begin(), s2.end(), s2.begin(), toupper);
+    std::cout << s2 << std::endl;
+    std::string s3 = "AAAbbb";
+    transform(s3.begin(), s3.end(), s3.begin(), tolower);
+    std::cout << s3 << std::endl;
 }
 
 int main(){
@@ -146,7 +163,8 @@ int main(){
 //    main03();
 //    main04();
 //    main05();
-    main06();
+//    main06();
+    main07();
     std::cout << "hello world" << std::endl;
     return 0;
 }
