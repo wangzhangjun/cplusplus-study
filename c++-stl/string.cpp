@@ -25,21 +25,26 @@ void main01()
 void main02()
 {
     std::string s1 = "abcdef";
-    std::cout << "数组方式：" << std::endl;
     //数组方式
+    std::cout << "数组方式：" << std::endl;
     for(int i = 0; i < s1.length(); i++) {
         std::cout << s1[i] ;
     }
     std::cout << std::endl;
-    std::cout << "迭代器方式：" << std::endl;
+
     //迭代器
+    std::cout << "迭代器方式：" << std::endl;
     for(std::string::iterator it = s1.begin(); it != s1.end(); ++it) {
         std::cout << *it ;
     }
     std::cout << std::endl;
+
     //at方式
+    /*
+     * at方式和[]方式的最大区别在于，at在访问出错的时候，可以跑出异常。[]会直接导致系统崩溃
+     * 如果您希望通过try,catch捕获异常，建议使用at
+     * */
     std::cout << "at方式：" << std::endl;
-    //at方式
     for(int i = 0; i < s1.length(); i++) {
         std::cout << s1.at(i) ;
     }
