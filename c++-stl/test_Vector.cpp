@@ -88,8 +88,23 @@ void main13()
 
     v1.erase(v1.begin(), v1.begin()+3); //区间删除
     v1.erase(v1.begin());               //指定位置删除
+    //删除某个一指定的值
+    for(std::vector<int>::iterator it = v1.begin(); it != v1.end();) {
+        if(*it == 8){
+            //当删除迭代器所指向的元素的时候，erase会让it自动下移
+            //注意要使用it接过来，因为erase删除后，会自动下移，为了循环我们也得让it下移
+            it = v1.erase(it);
+        }else{
+            it++;
+        }
+    }
+
+    v1.insert(v1.begin(), 100);
+    v1.insert(v1.end(), 200);
     printV(v1);
 }
+
+
 
 int main()
 {
