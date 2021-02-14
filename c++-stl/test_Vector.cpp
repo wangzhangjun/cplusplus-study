@@ -43,10 +43,11 @@ void main11()
     for(int i = 0; i < 10; i++)
     {
         //如果要通过等号的方式赋值的话，
-        //必须要声明v1的大小，否则会报错： std::vector<int> v1(10)
+        //必须要声明v1的大小，否则会报错:std::vector<int> v1(10)
         v1[i] = i + 1;
     }
-    for(int i = 0; i< 10; i++) {
+    for(int i = 0; i< 10; i++)
+    {
         std::cout << v1[i] << std::endl;
     }
 }
