@@ -37,19 +37,25 @@ void main10()
     std::vector<int> v3(v1.begin(), v1.begin()+2);
 }
 
+void printV(std::vector<int> &v)
+{
+    for(int i = 0; i<v.size(); i++){
+        std::cout << v[i];
+    }
+    std::cout << std::endl;
+}
+
+//数组方式
 void main11()
 {
-    std::vector<int> v1(10);
+    std::vector<int> v1(10); //提前把内存准备好
     for(int i = 0; i < 10; i++)
     {
         //如果要通过等号的方式赋值的话，
         //必须要声明v1的大小，否则会报错:std::vector<int> v1(10)
         v1[i] = i + 1;
     }
-    for(int i = 0; i< 10; i++)
-    {
-        std::cout << v1[i] << std::endl;
-    }
+    printV(v1);
 }
 
 int main()
