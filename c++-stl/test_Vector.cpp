@@ -80,13 +80,22 @@ void main12()
 //删除
 void main13()
 {
-    
+    std::vector<int> v1(10); //提前把内存准备好
+    for(int i = 0; i < 10; i++)
+    {
+        v1[i] = i + 1;
+    }
+
+    v1.erase(v1.begin(), v1.begin()+3); //区间删除
+    v1.erase(v1.begin());               //指定位置删除
+    printV(v1);
 }
 
 int main()
 {
     //main09();
 //    main11();
-    main12();
+//    main12();
+    main13();
     return 0;
 }
