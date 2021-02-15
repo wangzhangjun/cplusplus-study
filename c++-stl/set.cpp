@@ -74,10 +74,20 @@ void main32()
     Student s2("s2", 22);
     Student s3("s3", 44);
     Student s4("s4", 11);
+    Student s5("s5", 31); //set集合是唯一，不会插入进去。按照年龄排序，发现年龄一样，不会插入
+
     set1.insert(s1);
     set1.insert(s2);
     set1.insert(s3);
     set1.insert(s4);
+    //insert返回值判断
+    std::pair<std::set<Student, FuncStudent>::iterator, bool> pair1 =  set1.insert(s5);
+    if(pair1.second == true) {
+        std::cout << "插入成功！" << std::endl;
+    }else{
+        std::cout << "插入失败！" << std::endl;
+    }
+
     //遍历
     for(std::set<Student, FuncStudent>::iterator it = set1.begin(); it!=set1.end();it++){
         std::cout << it->age << "\t" << it->name << std::endl;
