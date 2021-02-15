@@ -95,6 +95,9 @@
 		<Unit filename="/Users/zhjwang/works/study/cplusplus-study/c++-stl/queue.cpp">
 			<Option target="c___stl"/>
 		</Unit>
+		<Unit filename="/Users/zhjwang/works/study/cplusplus-study/c++-stl/set.cpp">
+			<Option target="c___stl"/>
+		</Unit>
 		<Unit filename="/Users/zhjwang/works/study/cplusplus-study/c++-stl/stack.cpp">
 			<Option target="c___stl"/>
 		</Unit>

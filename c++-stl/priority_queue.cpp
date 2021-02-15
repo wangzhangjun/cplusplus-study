@@ -53,7 +53,7 @@ void main28()
     }
 }
 
-int main()
+int main29()
 {
     main28();
 }
