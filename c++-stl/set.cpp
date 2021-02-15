@@ -123,7 +123,7 @@ void main33()
     std::cout << *it4 << std::endl;//6
 }
 
-int main()
+int main34()
 {
 //    main30();
 //    main31();
