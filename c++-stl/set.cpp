@@ -67,6 +67,7 @@ struct FuncStudent
         }
     }
 };
+//插入返回值判断
 void main32()
 {
     std::set<Student, FuncStudent> set1;
