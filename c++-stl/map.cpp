@@ -59,8 +59,54 @@ void main37()
     }
 }
 
+//查找
+void main38()
+{
+    std::map<int ,std::string> map1;
+    //方法1
+    map1.insert(std::pair<int,std::string>(1, "teacher1"));
+    map1.insert(std::pair<int,std::string>(2, "teacher2"));
+    //方法2
+    map1.insert(std::make_pair(3, "teacher3"));
+    map1.insert(std::make_pair(4, "teacher4"));
+    //方法3
+    map1.insert(std::map<int ,std::string>::value_type(5,"teacher5"));
+    map1.insert(std::map<int ,std::string>::value_type(6,"teacher6"));
+    //方法4
+    map1[7] = "teacher7";
+    map1[8] = "teacher8";
+
+    //遍历
+    for(std::map<int ,std::string>::iterator it = map1.begin(); it!=map1.end();it++) {
+        std::cout << it->first << "\t" << it->second << std::endl;
+    }
+
+    std::map<int ,std::string>::iterator it = map1.find(100);
+    if(it == map1.end()){
+        std::cout << "key为100元素不存在！" <<std::endl;
+    }else{
+        std::cout << it->first << "\t" << it->second << std::endl;
+    }
+
+    //equal_range
+    std::pair<std::map<int ,std::string>::iterator,std::map<int ,std::string>::iterator> pair = map1.equal_range(5);
+    //第一个迭代器 大于等于5的迭代器位置
+    //第二个迭代器 大于5的位置
+    if(pair.first == map1.end()){
+        std::cout << "第一个迭代器 大于等于5的迭代器位置不存在" << std::endl;
+    }else{
+        std::cout << pair.first->first << "\t" << pair.first->second << std::endl;
+    }
+    if(pair.second == map1.end()){
+        std::cout << "第二个迭代器 大于5的迭代器位置不存在" << std::endl;
+    }else{
+        std::cout << pair.second->first << "\t" << pair.second->second << std::endl;
+    }
+}
+
 int main()
 {
-    main37();
+//    main37();
+    main38();
     return 0;
 }
