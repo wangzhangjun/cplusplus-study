@@ -60,13 +60,13 @@ void main26()
         }
     }
     testList.remove(4);//删除所有值为4的元素
-    
+
     for(std::list<int>::iterator it = testList.begin(); it!=testList.end(); ++it) {
         std::cout << *it << std::endl;
     }
 }
 
-int main()
+int main27()
 {
     main26();
     return 0;
