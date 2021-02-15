@@ -92,6 +92,9 @@
 		<Unit filename="/Users/zhjwang/works/study/cplusplus-study/c++-stl/map.cpp">
 			<Option target="c___stl"/>
 		</Unit>
+		<Unit filename="/Users/zhjwang/works/study/cplusplus-study/c++-stl/multimap.cpp">
+			<Option target="c___stl"/>
+		</Unit>
 		<Unit filename="/Users/zhjwang/works/study/cplusplus-study/c++-stl/multiset.cpp">
 			<Option target="c___stl"/>
 		</Unit>
