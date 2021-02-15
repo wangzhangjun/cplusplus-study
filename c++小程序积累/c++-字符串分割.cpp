@@ -36,9 +36,9 @@ void spilt_string(const std::string& strIn, const std::string& div, std::vector<
 
 void main01()
 {
-    std::string testInput = "2,3,4,5";
-    std::vector<std::string> output;
-    std::string div = ",";
+    std::string testInput = "2,3,4,5"; //输入
+    std::vector<std::string> output;   //输出
+    std::string div = ",";             //分隔符
     spilt_string(testInput, div, output);
     for(auto iter = output.begin(); iter!= output.end(); ++iter){
         std::cout << *iter <<std::endl;
