@@ -46,7 +46,7 @@ void main15()
     }
 }
 
-int main()
+int main16()
 {
     main15();
     std::cout << "hello.." << std::endl;
