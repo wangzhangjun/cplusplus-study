@@ -114,6 +114,13 @@ void main33()
     std::cout << "大于等于5的第一个元素迭代器：" << *it1 << std::endl;//5
     std::set<int>::iterator it2 = set1.upper_bound(5);//大于5的第一个元素的迭代器的位置
     std::cout << "大于5的第一个元素迭代器：" << *it2 << std::endl;//6
+
+    //set1.erase(5);测试equal_range
+    std::pair<std::set<int>::iterator ,std::set<int>::iterator> pair1 =  set1.equal_range(5);
+    std::set<int>::iterator it3 = pair1.first;
+    std::set<int>::iterator it4 = pair1.second;
+    std::cout << *it3 << std::endl;//5
+    std::cout << *it4 << std::endl;//6
 }
 
 int main()
