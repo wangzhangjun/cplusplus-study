@@ -68,7 +68,7 @@ void main19()
 
 }
 
-int main()
+int main20()
 {
 //    main17();
 //    main18();
