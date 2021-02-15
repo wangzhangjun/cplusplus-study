@@ -95,10 +95,32 @@ void main32()
     }
 }
 
+//set的查找
+void main33()
+{
+    std::set<int> set1;
+    for (int i = 0; i < 10; ++i) {
+        set1.insert(i);
+    }
+    //从小到大
+    for(std::set<int ,std::greater<int>>::iterator it = set1.begin(); it != set1.end(); it++){
+        std::cout << *it << std::endl;
+    }
+    std::set<int>::iterator it = set1.find(5);
+    std::cout << "5的迭代器:" << *it << std::endl;//5
+    int num = set1.count(5);
+    std::cout << "5的个数:" << num << std::endl;//1
+    std::set<int>::iterator it1 = set1.lower_bound(5);//大于等于5的第一个元素的迭代器的位置
+    std::cout << "大于等于5的第一个元素迭代器：" << *it1 << std::endl;//5
+    std::set<int>::iterator it2 = set1.upper_bound(5);//大于5的第一个元素的迭代器的位置
+    std::cout << "大于5的第一个元素迭代器：" << *it2 << std::endl;//6
+}
+
 int main()
 {
 //    main30();
 //    main31();
-    main32();
+//    main32();
+    main33();
     return 0;
 }
