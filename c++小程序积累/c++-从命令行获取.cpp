@@ -19,8 +19,10 @@ void main01()
 
     cout << "请输入colomns:" << endl;
     cin >> colomns;
+    cin.ignore();
     cout << "请输入len:" << endl;
     cin >> len;
+    cin.ignore();
     cout << "请输入str:" << endl;
     for (int i = 0; i < colomns; i++)
     {
