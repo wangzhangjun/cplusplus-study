@@ -24,9 +24,15 @@ void main01()
     cin >> len;
     cin.ignore();
     cout << "请输入str:" << endl;
+    // for (int i = 0; i < colomns; i++)
+    // {
+    //     cin >> str; //读取字符串，不含空格
+    //     svec.push_back(str);
+    //     str = "";
+    // }
     for (int i = 0; i < colomns; i++)
     {
-        cin >> str; //读取字符串，不含空格
+        getline(cin, str); //读取一行字符,可以包含空格
         svec.push_back(str);
         str = "";
     }
