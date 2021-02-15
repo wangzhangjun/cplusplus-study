@@ -46,14 +46,48 @@ void main31()
 }
 
 //对于复杂数据类型
-
+//自定义数据类型的比较 ==》 仿函数
+class Student {
+public:
+    Student(char *name, int age) {
+        strcpy(this->name, name);
+        this->age = age;
+    }
+    char name[64];
+    int age;
+};
+//使用仿函数进行大小比较
+struct FuncStudent
+{
+    bool operator()(const Student &left, const Student &right){
+        if(left.age < right.age) {
+            return true;
+        }else{
+            return false;
+        }
+    }
+};
 void main32()
 {
-
+    std::set<Student, FuncStudent> set1;
+    Student s1("s1", 31);
+    Student s2("s2", 22);
+    Student s3("s3", 44);
+    Student s4("s4", 11);
+    set1.insert(s1);
+    set1.insert(s2);
+    set1.insert(s3);
+    set1.insert(s4);
+    //遍历
+    for(std::set<Student, FuncStudent>::iterator it = set1.begin(); it!=set1.end();it++){
+        std::cout << it->age << "\t" << it->name << std::endl;
+    }
 }
+
 int main()
 {
 //    main30();
-    main31();
+//    main31();
+    main32();
     return 0;
 }
