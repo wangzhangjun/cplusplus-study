@@ -83,6 +83,9 @@
 		<Unit filename="/Users/zhjwang/works/study/cplusplus-study/c++-stl/deque.cpp">
 			<Option target="c___stl"/>
 		</Unit>
+		<Unit filename="/Users/zhjwang/works/study/cplusplus-study/c++-stl/list.cpp">
+			<Option target="c___stl"/>
+		</Unit>
 		<Unit filename="/Users/zhjwang/works/study/cplusplus-study/c++-stl/main.cpp">
 			<Option target="c___stl"/>
 		</Unit>

@@ -66,7 +66,7 @@ void main23()
     }
 }
 
-int main()
+int main24()
 {
     main23();
     return 0;
