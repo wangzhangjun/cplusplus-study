@@ -31,11 +31,10 @@ void test()
     int a = 4;
     isDiv<int> mydiv(a); //函数对象
     // find_if(v2.begin(), v2.end(), mydiv);
-    std::vector<int>::iterator it = find_if(v2.begin(), v2.end(), isDiv<int>(4)); //find_if返回的是一个迭代器
-
+    std::vector<int>::iterator it = find_if(v2.begin(), v2.end(), mydiv); //find_if返回的是一个迭代器
     if (it != v2.end())
     {
-        std::cout << "第一个被4整除的数是：" << *it << std::endl;
+        std::cout << "第一个被4整除的数是：" << *it << std::endl; //12
     }
 }
 
