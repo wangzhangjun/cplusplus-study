@@ -41,7 +41,7 @@ void test()
         return __result;
     }
     */
-    std::vector<int>::iterator it = transform(v1.begin(), v1.end(), v2.begin(),v3.begin(), SumAdd<int>());  //要看transform的返回值，以及是如何运行计算的
+    std::vector<int>::iterator it = transform(v1.begin(), v1.end(), v2.begin(), v3.begin(), SumAdd<int>());  //要看transform的返回值，以及是如何运行计算的
     for(std::vector<int>::iterator it = v3.begin(); it != v3.end(); ++it) {
         std::cout << *it << std::endl; //5 7 9
     }
