@@ -47,7 +47,7 @@ void test()
 
     //通过预定义函数对象求大于2的个数
     /*
-    greater<>()有两个参数，左参数来自容器的元素，右参数固定成2（通过bind2nd绑定的）
+    greater<>()有两个参数，左参数来自容器的元素，右参数固定成2（通过bind2nd绑定的,现在更推荐的是通过std::bind来解决）
     */
     // int num3 = std::count_if(v1.begin(), v1.end(), bind2nd(std::greater<int>(), 2));
     auto fn = std::bind(std::greater<int>(), std::placeholders::_1, 2);
