@@ -78,6 +78,23 @@ void test_count_if()
     int num = count_if(vecInt.begin(), vecInt.end(), GreaterThree);
     std::cout << num << std::endl; //5
 }
+void test_find()
+{
+    std::vector<int> vecInt;
+    vecInt.push_back(1);
+    vecInt.push_back(3);
+    vecInt.push_back(5);
+    vecInt.push_back(6);
+    vecInt.push_back(7);
+    vecInt.push_back(59);
+
+    std::vector<int>::iterator it = find(vecInt.begin(), vecInt.end(), 5);
+    std::cout << "find:" << *it << std::endl;
+
+    //返回第一个满足回调函数的迭代器
+    std::vector<int>::iterator it1 = find_if(vecInt.begin(), vecInt.end(), GreaterThree);
+    std::cout << "find_if:" << *it1 << std::endl; //3
+}
 
 int main()
 {
@@ -85,5 +102,6 @@ int main()
     test_binary_search();
     test_count();
     test_count_if();
+    test_find();
     std::cout << "hello world" << std::endl;
 }
