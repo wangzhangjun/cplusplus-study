@@ -49,16 +49,20 @@ void test()
     /*
     greater<>()有两个参数，左参数来自容器的元素，右参数固定成2（通过bind2nd绑定的）
     */
-    int num3 = std::count_if(v1.begin(), v1.end(), bind2nd(std::greater<int>(), 2));
+    // int num3 = std::count_if(v1.begin(), v1.end(), bind2nd(std::greater<int>(), 2));
+    auto fn = std::bind(std::greater<int>(), std::placeholders::_1, 2);
+    int num3 = std::count_if(v1.begin(), v1.end(), fn);
     std::cout << "num3:" << num3 << std::endl;
 
     //取模 能被2整除的数 求奇数
-    int num4 = count_if(v1.begin(), v1.end(), bind2nd(std::modulus<int>(), 2));
+    // int num4 = count_if(v1.begin(), v1.end(), std::bind2nd(std::modulus<int>(), 2));
+    auto fn1 = std::bind(std::modulus<int>(), std::placeholders::_1, 2);
+    int num4 = count_if(v1.begin(), v1.end(), fn1);
     std::cout << "奇数num4:" << num4 << std::endl;
 
     //求偶数
-    int num5 = count_if(v1.begin(), v1.end(), std::not1(bind2nd(std::modulus<int>(), 2)));
-    std::cout << "偶数num5:" << num5 << std::endl;
+    // int num5 = count_if(v1.begin(), v1.end(), std::not1(std::bind2nd(std::modulus<int>(), 2)));
+    // std::cout<< "偶数num5:" << num5 << std::endl;
 }
 
 int main()
