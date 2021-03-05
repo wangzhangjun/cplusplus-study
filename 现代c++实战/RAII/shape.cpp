@@ -5,6 +5,17 @@
 #include "shape.h"
 #include <iostream>
 
+/*
+知识点：
+1. 如下例子，怎么保证new出来的shape的内存会被释放掉，统一的做法是：保存到一个变量，并且确保在析构函数中会去delete
+2. 析构函数调用时机：
+    1. 出{}这个的时候;
+    2. delete的时候；
+    3. delete指向对象的基类类型指针，而其基类虚构函数是虚函数时；
+    4. 对象i是对象o的成员，o的析构函数被调用时，对象i的析构函数也被调用。
+3. delete不用去判断是否为nullptr，因为delete实现的里面就会去判断
+*/
+
 shape::shape() {
     std::cout << "shape" <<std::endl;
 }
