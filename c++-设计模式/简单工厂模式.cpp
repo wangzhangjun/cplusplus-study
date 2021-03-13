@@ -27,6 +27,7 @@ public:
 class FruitFactory{
     public:
         static AbstractFruit * createFruit(string flag) {
+            //不符合开闭原则
             if(flag == "apple") {
                 return new Apple;
             }else if(flag == "bana"){
