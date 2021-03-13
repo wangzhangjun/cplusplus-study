@@ -1,5 +1,9 @@
 #include <iostream>
 
+/*
+开闭原则：
+对扩展开放，对修改关闭，增加功能时通过增加代码来实现的，而不是去修改源代码来实现。
+*/
 //抽象类
 class AbstractCaculator
 {
