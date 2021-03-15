@@ -10,10 +10,10 @@ class DrinkTemplate{
         virtual void PourInCup() = 0; //倒入杯子
         virtual void AddSomething() = 0; //加入辅料
         void Make(){
-            boilWater();
-            Brew();
-            PourInCup();
-            AddSomething();
+            this->boilWater();
+            this->Brew();
+            this->PourInCup();
+            this->AddSomething();
         }
 };
 
@@ -59,7 +59,9 @@ void test()
     Tea * tea = new Tea;
     tea->Make();
 
-    Coffe *coff = new Coffe;
+    cout << "================" << endl;
+    
+    DrinkTemplate *coff = new Coffe;
     coff->Make();
 }
 
