@@ -5,7 +5,9 @@
 #ifndef BOOKSTORE_CPPLANG_H
 #define BOOKSTORE_CPPLANG_H
 
-#include <assert>
+#include <assert.h>
+#include <atomic>
+#include <thread>
 
 //must be c++11 or later
 #if __cplusplus < 201103
