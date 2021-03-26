@@ -11,7 +11,7 @@
 
 //must be c++11 or later
 #if __cplusplus < 201103
-# error "c++ is to old"
+# error "c++ is too old"
 #endif
 
 
