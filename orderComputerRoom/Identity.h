@@ -13,7 +13,7 @@ public:
     std::string m_name;  //用户名
     std::string m_pwd;   //密码
     //操作菜单
-    virtual void operMenu() = 0;
+    virtual void operMenu() = 0;  //多态，每一个身份都要处理自己的菜单界面
 };
 
 #endif //ORDERCOMPUTERROOM_IDENTITY_H
