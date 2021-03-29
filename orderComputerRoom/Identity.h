@@ -7,6 +7,7 @@
 #include "string"
 
 //身份抽象类
+//每一种身份都有其特性，抽出公共的部分
 class Identity {
 public:
     std::string m_name;  //用户名
