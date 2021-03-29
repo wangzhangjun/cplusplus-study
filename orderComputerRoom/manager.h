@@ -13,8 +13,10 @@ public:
 
     //选择菜单
     virtual void operMenu();
+
     //添加账号
     void addPerson();
+
     //查看账号
     void showPerson();
 
