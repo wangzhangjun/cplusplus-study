@@ -90,7 +90,14 @@ void manager::addPerson()
     this->initVector(); //刚添加的用户也要加到容器中
 }
 
-void manager::cleanFile() {}
+void manager::cleanFile()
+{
+    ofstream ofs(ORDER_FILE, ios::trunc);
+    ofs.close();
+
+    cout << "清空成功！" << endl;
+    system("clear");
+}
 
 void manager::showComputer()
 {
