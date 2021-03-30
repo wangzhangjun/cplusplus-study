@@ -108,11 +108,9 @@ void LoginIn(std::string fileName, int type)
             if(id == fId && name == fName && pwd == fPwd) {
                 cout << "学生验证登录成功！" << endl;
                 system("clear");
-
-//                person = new Student(1, "name", "123");
                 person = std::make_shared<Student>(id,name,pwd);
-
                 //进入学生身份的子菜单
+                studentMenu(person);
                 return;
             }
         }
@@ -129,9 +127,7 @@ void LoginIn(std::string fileName, int type)
             {
                 cout << "教师验证登录成功!" << endl;
                 system("clear");
-//                person = new teacher(id, name, pwd);
                 person = std::make_shared<teacher>(id,name,pwd);
-
                 //跳转到老师身份子菜单
                 return;
             }
@@ -150,7 +146,6 @@ void LoginIn(std::string fileName, int type)
                 //登录成功后，按任意键进入管理员界面
                 system("clear");
                 //创建管理员对象
-//                person = new manager(name,pwd);
                 person = std::make_shared<manager>(name,pwd);
                 managerMenu(person);
                 return;
