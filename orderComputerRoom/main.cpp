@@ -55,6 +55,21 @@ void LoginIn(std::string fileName, int type)
     else if (type == 2)
     {
         //教师登录验证
+        int fId;
+        std::string fName;
+        std::string fPwd;
+        while (ifs >> fId && ifs >> fName && ifs >> fPwd)
+        {
+            if (id == fId && name == fName && pwd == fPwd)
+            {
+                cout << "教师验证登录成功!" << endl;
+                system("clear");
+                person = new teacher(id, name, pwd);
+
+                //跳转到老师身份子菜单
+                return;
+            }
+        }
     }
     else if(type == 3)
     {
