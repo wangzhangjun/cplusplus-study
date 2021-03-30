@@ -65,4 +65,20 @@ void manager::initVector() {
     ifs.close();
 }
 
+bool manager::checkRepeat(int id, int type) {
+    if(type == 1){
+        for(auto it = vStu.begin(); it != vStu.end(); ++it) {
+            if(id == it->m_id) {
+                return true;
+            }
+        }
+    }else if(type == 2) {
+        for(auto it = vTeacher.begin(); it != vTeacher.end(); ++it) {
+            if(id == it->m_emid) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
 

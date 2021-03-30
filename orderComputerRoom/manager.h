@@ -37,6 +37,9 @@ public:
     //教师容器
     std::vector<teacher> vTeacher;
 
+    //检测重复 参数:(传入id，传入类型)
+    bool checkRepeat(int id, int type);
+
     std::string m_Name;
     std::string m_Pwd;
     int m_Id;
