@@ -13,6 +13,7 @@ manager::manager() {}
 manager::manager(std::string name, std::string pwd) {
     this->m_Name = name;
     this->m_Pwd = pwd;
+    this->initVector();
 }
 void manager::operMenu() {
     cout << "欢迎管理员："<<this->m_Name << "登录！" << endl;
