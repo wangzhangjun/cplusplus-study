@@ -32,7 +32,64 @@ void manager::operMenu() {
     cout << "\t\t ---------------------------------\n";
     cout << "请选择您的操作： " << endl;
 }
-void manager::addPerson() {}
+void manager::addPerson()
+{
+    cout << "请输入添加账号的类型" << endl;
+    cout << "1、添加学生" << endl;
+    cout << "2、添加老师" << endl;
+
+    string errorTip; //重复错误提示
+    string fileName;
+    string tip;
+    ofstream ofs;
+
+    int select = 0;
+    cin >> select;
+    if (select == 1){
+        fileName = STUDENT_FILE;
+        tip = "请输入学号： ";
+        errorTip = "学号重复，请重新输入";
+    }
+    else{
+        fileName = TEACHER_FILE;
+        tip = "请输入职工编号：";
+        errorTip = "职工号重复，请重新输入";
+    }
+
+    ofs.open(fileName, ios::out | ios::app);
+    int id;
+    string name;
+    string pwd;
+    cout <<tip << endl;
+
+    while (true) {
+        cin >> id;
+        bool ret = this->checkRepeat(id, 1);
+        if (ret) //有重复
+        {
+            cout << errorTip << endl;
+        }
+        else
+        {
+            break;
+        }
+    }
+
+    cout << "请输入姓名： " << endl;
+    cin >> name;
+
+    cout << "请输入密码： " << endl;
+    cin >> pwd;
+
+    ofs << id << " " << name << " " << pwd << " " << endl;
+    cout << "添加成功" << endl;
+
+    system("clear");
+    ofs.close();
+
+    this->initVector(); //刚添加的用户也要加到容器中
+}
+
 void manager::cleanFile() {}
 void manager::showComputer() {}
 void manager::showPerson() {}

@@ -13,12 +13,10 @@ void managerMenu(std::shared_ptr<Identity> man)
     while (true) {
         //管理员菜单
         man->operMenu();
-        cout << "引用计数：" << man.use_count() << endl;
         std::shared_ptr<manager> m = std::dynamic_pointer_cast<manager>(man);
 
-        cout << "引用计数：" << m.use_count() << endl;
-
         int select = 0;
+        std::string errorTip;
         cin >> select;
 
         if(select == 1) {
