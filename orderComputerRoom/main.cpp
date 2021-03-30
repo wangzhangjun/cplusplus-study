@@ -39,6 +39,38 @@ void managerMenu(std::shared_ptr<Identity> man)
     }
 }
 
+//学生菜单
+void studentMenu(std::shared_ptr<Identity> ptr)
+{
+    while (true) {
+        ptr->operMenu();
+        std::shared_ptr<Student> stu = std::dynamic_pointer_cast<Student>(ptr);
+        int select = 0;
+        cin >> select;
+        if (select == 1) //申请预约
+        {
+            stu->applyOrder();
+        }
+        else if (select == 2) //查看自身预约
+        {
+            stu->showMyorder();
+        }
+        else if (select == 3) //查看所有预约
+        {
+            stu->showAllOrder();
+        }
+        else if (select == 4) //取消预约
+        {
+            stu->cancelOrder();
+        }else{
+            cout << "注销成功" << endl;
+            system("clear");
+            return;
+        }
+    }
+
+}
+
 //登录功能
 void LoginIn(std::string fileName, int type)
 {
