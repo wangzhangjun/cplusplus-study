@@ -92,8 +92,30 @@ void manager::addPerson()
 
 void manager::cleanFile() {}
 void manager::showComputer() {}
-void manager::showPerson() {}
 
+void printStudent(Student &s)
+{
+    cout << "学号： " << s.m_id << " 姓名： " << s.m_Name << " 密码：" << s.m_Pwd << endl;
+}
+void printTeacher(teacher &t)
+{
+    cout << "职工号： " << t.m_emid << " 姓名： " << t.m_emname << " 密码：" << t.m_empwd << endl;
+}
+
+void manager::showPerson()
+{
+    cout << "请选择查看内容：" << endl;
+    cout << "1、查看所有学生" << endl;
+    cout << "2、查看所有老师" << endl;
+
+    int select = 0;
+    cin >> select;
+    if(select  == 1) {
+        for_each(vStu.begin(), vStu.end(),printStudent);
+    }else {
+        for_each(vTeacher.begin(), vTeacher.end(),printTeacher);
+    }
+}
 void manager::initVector() {
     //读取学生文件中
     ifstream ifs;
