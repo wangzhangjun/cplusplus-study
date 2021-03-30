@@ -26,6 +26,10 @@ public:
     //清空预约记录
     void cleanFile();
 
+    std::string m_Name;
+    std::string m_Pwd;
+
+
 };
 
 

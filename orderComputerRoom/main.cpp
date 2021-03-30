@@ -8,6 +8,37 @@
 #include "manager.h"
 using namespace  std;
 
+void managerMenu(Identity * &man)
+{
+    while (true) {
+        //管理员菜单
+        man->operMenu();
+
+        manager * m = (manager *) man;
+        int select = 0;
+        cin >> select;
+
+        if(select == 1) {
+            cout << "添加账号" << endl;
+            m->addPerson();
+        }else if(select == 2) {
+            cout << "查看账号" << endl;
+            m->showPerson();
+        }else if(select == 3) {//查看机房
+            cout << "查看机房" << endl;
+            m->showComputer();
+        }else if (select == 4) {//清空预约
+            cout << "清空预约" << endl;
+            m->cleanFile();
+        }else{
+            delete man;
+            cout << "注销成功" << endl;
+            system("clear");
+            return;
+        }
+    }
+}
+
 //登录功能
 void LoginIn(std::string fileName, int type)
 {
@@ -86,6 +117,7 @@ void LoginIn(std::string fileName, int type)
                 system("clear");
                 //创建管理员对象
                 person = new manager(name,pwd);
+                managerMenu(person);
                 return;
             }
         }
