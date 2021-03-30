@@ -7,6 +7,7 @@
 
 #include "Identity.h"
 #include <string>
+#include "computerRoom.h"
 
 class Student : public Identity{
 public:
@@ -23,6 +24,9 @@ public:
     void showAllOrder();
     //取消预约
     void cancelOrder();
+
+    //机房容器
+    std::vector<computerRoom> vCom;
     //学生学号
     int m_id;
     std::string m_Name;
