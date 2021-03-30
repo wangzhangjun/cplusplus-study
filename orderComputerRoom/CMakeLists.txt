@@ -3,4 +3,4 @@ project(orderComputerRoom)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(orderComputerRoom main.cpp Student.cpp teacher.cpp manager.cpp)
+add_executable(orderComputerRoom main.cpp Student.cpp teacher.cpp manager.cpp computerRoom.cpp)

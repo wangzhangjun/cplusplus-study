@@ -91,7 +91,15 @@ void manager::addPerson()
 }
 
 void manager::cleanFile() {}
-void manager::showComputer() {}
+
+void manager::showComputer()
+{
+    cout << "机房信息如下： " << endl;
+    for(auto it  = vCom.begin(); it != vCom.end(); ++it) {
+        cout << "机房编号： " << it->m_ComId << " 机房最大容量： " << it->m_MaxNum << endl;
+    }
+    system("clear");
+}
 
 void printStudent(Student &s)
 {
@@ -141,6 +149,15 @@ void manager::initVector() {
         vTeacher.push_back(t);
     }
     cout << "当前教师数量为： " << vTeacher.size() << endl;
+    ifs.close();
+
+    //读取机房信息
+    computerRoom com;
+    ifs.open(COMPUTER_FILE, ios::in);
+    while (ifs >> com.m_ComId && ifs >> com.m_MaxNum){
+        vCom.push_back(com);
+    }
+    cout << "当前机房数量为： " << vCom.size() << endl;
     ifs.close();
 }
 
