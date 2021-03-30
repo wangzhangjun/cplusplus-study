@@ -14,6 +14,8 @@ public:
     void showAllOrder();  //查看所有预约
     void validOrder();  //审核预约
     int m_emid;  //教师编号
+    std::string m_emname;
+    std::string m_empwd;
 };
 
 

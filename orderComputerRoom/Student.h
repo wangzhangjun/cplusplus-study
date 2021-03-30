@@ -25,6 +25,8 @@ public:
     void cancelOrder();
     //学生学号
     int m_id;
+    std::string m_Name;
+    std::string m_Pwd;
 };
 
 

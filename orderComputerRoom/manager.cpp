@@ -3,7 +3,9 @@
 //
 
 #include "manager.h"
+#include "globalFile.h"
 #include <iostream>
+#include <fstream>
 
 using namespace  std;
 
@@ -33,3 +35,33 @@ void manager::addPerson() {}
 void manager::cleanFile() {}
 void manager::showComputer() {}
 void manager::showPerson() {}
+
+void manager::initVector() {
+    //读取学生文件中
+    ifstream ifs;
+    ifs.open(STUDENT_FILE, ios::in);
+    if(!ifs.is_open()) {
+        cout << "文件读取失败！" << endl;
+        return;
+    }
+    vStu.clear();
+    vTeacher.clear();
+
+    Student s;
+    while (ifs >> s.m_id && ifs >> s.m_Name &&  ifs >> s.m_Pwd){
+        vStu.push_back(s);
+    }
+    cout << "当前学生数量为： " << vStu.size() << endl;
+    ifs.close();
+
+    //读取老师
+    ifs.open(TEACHER_FILE, ios::in);
+    teacher t;
+    while(ifs >> t.m_emid && ifs >> t.m_emname && ifs >> t.m_empwd){
+        vTeacher.push_back(t);
+    }
+    cout << "当前教师数量为： " << vTeacher.size() << endl;
+    ifs.close();
+}
+
+

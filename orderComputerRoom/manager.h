@@ -5,6 +5,9 @@
 #ifndef ORDERCOMPUTERROOM_MANAGER_H
 #define ORDERCOMPUTERROOM_MANAGER_H
 #include "Identity.h"
+#include "Student.h"
+#include "teacher.h"
+#include "vector"
 
 class manager : public Identity{
 public:
@@ -26,8 +29,17 @@ public:
     //清空预约记录
     void cleanFile();
 
+    //初始化容器
+    void initVector();
+
+    //学生容器
+    std::vector<Student> vStu;
+    //教师容器
+    std::vector<teacher> vTeacher;
+
     std::string m_Name;
     std::string m_Pwd;
+    int m_Id;
 
 
 };
