@@ -6,11 +6,12 @@
 #define ORDERCOMPUTERROOM_STUDENT_H
 
 #include "Identity.h"
+#include <string>
 
-class student : public Identity{
+class Student : public Identity{
 public:
-    student();
-    student(int id, std::string name, std::string  pwd);
+    Student();
+    Student(int id, std::string name, std::string pwd);
 public:
     //菜单界面
     virtual void operMenu();

@@ -1,7 +1,10 @@
 #include <iostream>
 #include <fstream>
+#include <string>
 #include "Identity.h"
 #include "globalFile.h"
+#include "Student.h"
+#include "teacher.h"
 using namespace  std;
 
 //登录功能
@@ -34,6 +37,20 @@ void LoginIn(std::string fileName, int type)
     if (type == 1)
     {
         //学生登录验证
+        int fId;
+        std::string fName;
+        std::string fPwd;
+        while(ifs >> fId && ifs >> fName && ifs>>fPwd){
+            if(id == fId && name == fName && pwd == fPwd) {
+                cout << "学生验证登录成功！" << endl;
+                system("clear");
+
+                person = new Student(1, "name", "123");
+
+                //进入学生身份的子菜单
+                return;
+            }
+        }
     }
     else if (type == 2)
     {
@@ -74,10 +91,10 @@ int main() {
                 LoginIn(STUDENT_FILE, 1);
                 break;
             case 2:  //老师
-                LoginIn(TEACHER_FILE, 1);
+                LoginIn(TEACHER_FILE, 2);
                 break;
             case 3:   //管理员
-                LoginIn(ADMIN_FILE, 1);
+                LoginIn(ADMIN_FILE, 3);
                 break;
             case 0:  //退出系统
                 cout << "欢迎下次使用！" << endl;
