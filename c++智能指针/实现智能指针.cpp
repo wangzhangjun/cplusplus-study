@@ -68,6 +68,7 @@ void CStudent::release()
 {
     if (m_pszName != NULL && --*m_pcount == 0)
     {
+        //通过计数器来避免资源被重复释放
         delete m_pszName;
         m_pszName = NULL;
         delete m_pcount;
