@@ -8,7 +8,7 @@ class HelloWorldStubImpl: public v1_0::commonapi::HelloWorldStubDefault {
 public:
     HelloWorldStubImpl();
     virtual ~HelloWorldStubImpl();
-    virtual void sayHello(const std::shared_ptr<CommonAPI::ClientId> _client,   std::string _name,uint8_t _index, sayHelloReply_t _return);
-    // virtual void sayHello2(const std::shared_ptr<CommonAPI::ClientId> _client, std::string _name, sayHello2Reply_t _reply);
+    virtual void sayHello(const std::shared_ptr<CommonAPI::ClientId> _client,   std::string _name, uint64_t _index, v1::commonapi::HelloWorld::EventType _eventType, sayHelloReply_t _return);
+    virtual void sayGoodBye(const std::shared_ptr<CommonAPI::ClientId> _client, std::string _name, uint64_t _index, v1::commonapi::HelloWorld::EventType _eventType, sayGoodByeReply_t _return);
 };
 #endif /* HELLOWORLDSTUBIMPL_H_ */

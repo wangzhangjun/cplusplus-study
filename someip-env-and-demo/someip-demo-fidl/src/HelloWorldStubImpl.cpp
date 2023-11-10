@@ -5,20 +5,22 @@ HelloWorldStubImpl::HelloWorldStubImpl() { }
 HelloWorldStubImpl::~HelloWorldStubImpl() { }
 
 
-void HelloWorldStubImpl::sayHello(const std::shared_ptr<CommonAPI::ClientId> _client, std::string _name,  uint8_t _index, sayHelloReply_t _reply) {
+void HelloWorldStubImpl::sayHello(const std::shared_ptr<CommonAPI::ClientId> _client, std::string _name, uint64_t _index, v1::commonapi::HelloWorld::EventType _eventType, sayHelloReply_t _reply) {
 	std::stringstream messageStream;
 	messageStream << "Hello " << _name << "!";
-	std::cout << "service recv index : " <<  +_index << std::endl;
+	std::cout << "service recv sayHello index : " <<  +_index << std::endl;
+	printf("service recv sayHello eventType : %d\n", (int)_eventType);
 	std::cout << "sayHello('" << _name << "'): '" << messageStream.str() << "'\n";
-	// std::cout << "in service" << _name << _index << std::endl;
 
     _reply(messageStream.str());
 };
 
-// virtual void sayHello2(const std::shared_ptr<CommonAPI::ClientId> _client, std::string _name, sayHello2Reply_t _reply) {
-// 	std::stringstream messageStream;
-// 	messageStream << "Hello2 " << _name << "!";
-// 	std::cout << "sayHello2('" << _name << "'): '" << messageStream.str() << "'\n";
-	
-// 	_reply(messageStream.str());
-// }
+void HelloWorldStubImpl::sayGoodBye(const std::shared_ptr<CommonAPI::ClientId> _client, std::string _name, uint64_t _index, v1::commonapi::HelloWorld::EventType _eventType, sayGoodByeReply_t _reply) {
+	std::stringstream messageStream;
+	messageStream << "GoodBye " << _name << "!";
+	std::cout << "service recv sayGoodBye index : " <<  +_index << std::endl;
+	printf("service recv sayGoodBye eventType : %d\n", (int)_eventType);
+	std::cout << "sayGoodBye('" << _name << "'): '" << messageStream.str() << "'\n";
+
+    _reply(messageStream.str());
+}

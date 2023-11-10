@@ -7,6 +7,10 @@ define org.genivi.commonapi.someip.deployment for interface commonapi.HelloWorld
 	method sayHello {
 		SomeIpMethodID = 123
 	}
+
+	method sayGoodBye {
+		SomeIpMethodID = 456
+	}
 }
 
 define org.genivi.commonapi.someip.deployment for provider as MyService {

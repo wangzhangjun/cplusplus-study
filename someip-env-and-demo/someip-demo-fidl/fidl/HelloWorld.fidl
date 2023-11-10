@@ -5,10 +5,28 @@ interface HelloWorld {
   method sayHello {
     in {
       String name
-      UInt8 index
+      UInt64 index
+      EventType eventType
     }
     out {
       String message
     }
+  }
+
+  method sayGoodBye {
+    in {
+      String name
+      UInt64 index
+      EventType eventType
+    }
+    out {
+      String message
+    }
+  }
+
+  enumeration EventType {
+    HEART_BEAT = 0
+    HB_RESTART = 1
+    RESET_REQUEST = 2
   }
 }

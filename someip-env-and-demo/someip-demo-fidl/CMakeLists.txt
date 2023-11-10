@@ -11,17 +11,19 @@ link_directories(
 	#/usr/local/lib
 	/usr/lib
 )
-add_executable(HelloWorldClient
+add_executable(client
 	src/HelloWorldClient.cpp
 	src-gen/v1/commonapi/HelloWorldSomeIPProxy.cpp
 	src-gen/v1/commonapi/HelloWorldSomeIPDeployment.cpp
 )
-target_link_libraries(HelloWorldClient CommonAPI CommonAPI-SomeIP vsomeip3)
-add_executable(HelloWorldService
+target_link_libraries(client CommonAPI CommonAPI-SomeIP vsomeip3)
+
+
+add_executable(service
 	src/HelloWorldService.cpp
 	src/HelloWorldStubImpl.cpp
 	src-gen/v1/commonapi/HelloWorldSomeIPStubAdapter.cpp
 	# src-gen/v1/commonapi/HelloWorldStubDefault.cpp
 	src-gen/v1/commonapi/HelloWorldSomeIPDeployment.cpp
 )
-target_link_libraries(HelloWorldService CommonAPI CommonAPI-SomeIP vsomeip3)
+target_link_libraries(service CommonAPI CommonAPI-SomeIP vsomeip3)

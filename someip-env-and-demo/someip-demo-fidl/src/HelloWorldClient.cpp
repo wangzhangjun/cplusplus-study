@@ -9,7 +9,7 @@ using namespace v1_0::commonapi;
 
 int main() {
     std::shared_ptr < CommonAPI::Runtime > runtime = CommonAPI::Runtime::get();
-    std::shared_ptr<HelloWorldProxy<>> myProxy = runtime->buildProxy<HelloWorldProxy>("local", "test");  // test是InstanceId, 
+    std::shared_ptr<HelloWorldProxy<>> myProxy = runtime->buildProxy<HelloWorldProxy>("local", "test");  // test是InstanceId,
 
     std::cout << "Checking availability!" << std::endl;
     while (!myProxy->isAvailable()) {
@@ -20,7 +20,10 @@ int main() {
     std::cout << "Available..." << std::endl;
     CommonAPI::CallStatus callStatus;
     std::string returnMessage;
-    myProxy->sayHello("Zhjwang", 12 ,callStatus, returnMessage);
-    std::cout << "Got message: '" << returnMessage << "'\n";
+    myProxy->sayHello("Zhjwang", 123 , HelloWorld::EventType::HEART_BEAT, callStatus, returnMessage);
+    std::cout << "Got message after sayHello: '" << returnMessage << "'\n";
+
+    myProxy->sayGoodBye("Zhjwang", 456 , HelloWorld::EventType::HB_RESTART, callStatus, returnMessage);
+    std::cout << "Got message after sayGoodBye: '" << returnMessage << "'\n";
     return 0;
 }
