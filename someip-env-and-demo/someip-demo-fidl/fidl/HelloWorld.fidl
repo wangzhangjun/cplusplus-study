@@ -24,6 +24,11 @@ interface HelloWorld {
     }
   }
 
+  broadcast myStatus {
+    out {
+        Int32 myCurrentValue
+    }
+  }
   enumeration EventType {
     HEART_BEAT = 0
     HB_RESTART = 1
