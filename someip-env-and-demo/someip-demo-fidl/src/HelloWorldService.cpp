@@ -13,8 +13,9 @@ int main() {
     std::cout << "Successfully Registered Service!" << std::endl;
 
     while (true) {
+        myService->incCounter();
         std::cout << "Waiting for calls... (Abort with CTRL+C)" << std::endl;
-        std::this_thread::sleep_for(std::chrono::seconds(30));
+        std::this_thread::sleep_for(std::chrono::seconds(2));
     }
     return 0;
 }
