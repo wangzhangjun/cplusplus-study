@@ -11,6 +11,11 @@ define org.genivi.commonapi.someip.deployment for interface commonapi.HelloWorld
 	method sayGoodBye {
 		SomeIpMethodID = 456
 	}
+
+	broadcast myStatus {
+        	SomeIpEventID = 789        
+        	SomeIpEventGroups = { 789 }
+    	}
 }
 
 define org.genivi.commonapi.someip.deployment for provider as MyService {
