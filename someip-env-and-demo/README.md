@@ -14,6 +14,6 @@ make
 
 生成fidl文件
 ```
-commonapi-core-generator-linux-x86_64 ./fidl/HelloWorld.fidl
+commonapi-core-generator-linux-x86_64 -sk ./fidl/HelloWorld.fidl
 commonapi-someip-generator-linux-x86_64 ./fidl/HelloWorld.fdepl
 ```
