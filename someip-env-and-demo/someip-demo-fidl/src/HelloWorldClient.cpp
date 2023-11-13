@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <unistd.h>
+#include <thread>
 #include <CommonAPI/CommonAPI.hpp>
 #include <v1/commonapi/HelloWorldProxy.hpp>
 
@@ -25,5 +26,16 @@ int main() {
 
     myProxy->sayGoodBye("Zhjwang", 456 , HelloWorld::EventType::HB_RESTART, callStatus, returnMessage);
     std::cout << "Got message after sayGoodBye: '" << returnMessage << "'\n";
+
+    // Subscribe to broadcast
+    myProxy->getMyStatusEvent().subscribe([&](const int32_t& val) {
+        std::cout << "Received status event: " << val << std::endl;
+    });
+    
+    while (true) {
+        std::cout << "Now I am going to sleep for 5 seconds..." << std::endl;
+        std::this_thread::sleep_for(std::chrono::seconds(5));
+    }
+
     return 0;
 }
