@@ -1,7 +1,7 @@
 // HelloWorldStubImpl.cpp
 #include "HelloWorldStubImpl.hpp"
 
-HelloWorldStubImpl::HelloWorldStubImpl() { }
+HelloWorldStubImpl::HelloWorldStubImpl() { cnt = 0; }
 HelloWorldStubImpl::~HelloWorldStubImpl() { }
 
 
@@ -23,4 +23,10 @@ void HelloWorldStubImpl::sayGoodBye(const std::shared_ptr<CommonAPI::ClientId> _
 	std::cout << "sayGoodBye('" << _name << "'): '" << messageStream.str() << "'\n";
 
     _reply(messageStream.str());
+}
+
+void HelloWorldStubImpl::incCounter() {
+	cnt++;
+	fireMyStatusEvent((int32_t) cnt);  //  生成后就会有这个方法名，把广播fire出去
+	std::cout << "New counter value = " << cnt << "!" << std::endl;
 }
