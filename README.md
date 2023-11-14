@@ -11,3 +11,6 @@ https://www.cnblogs.com/youxia/p/linuxdesktop009.html
 https://cloud.tencent.com/developer/article/1442279
 https://github.com/astrand/xclip
 https://webcache.googleusercontent.com/search?q=cache:c9ipt4DS7qwJ:https://forum.ubuntu.org.cn/viewtopic.php%3Ft%3D476722+&cd=1&hl=zh-CN&ct=clnk
+
+
+https://pdf.dfcfw.com/pdf/H3_AP202201141540346913_1.pdf?1642170008000.pdf
