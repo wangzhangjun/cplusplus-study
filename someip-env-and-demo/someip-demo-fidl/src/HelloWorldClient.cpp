@@ -3,6 +3,7 @@
 #include <string>
 #include <unistd.h>
 #include <thread>
+#include <vsomeip/vsomeip.hpp>
 #include <CommonAPI/CommonAPI.hpp>
 #include <v1/commonapi/HelloWorldProxy.hpp>
 
