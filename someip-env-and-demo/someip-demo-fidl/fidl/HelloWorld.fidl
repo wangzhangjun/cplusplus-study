@@ -1,0 +1,38 @@
+package commonapi
+
+interface HelloWorld {
+  version {major 1 minor 0}
+  method sayHello {
+    in {
+      String name
+      UInt64 index
+      EventType eventType
+    }
+    out {
+      String message
+    }
+  }
+
+  method sayGoodBye {
+    in {
+      String name
+      UInt64 index
+      EventType eventType
+    }
+    out {
+      String message
+    }
+  }
+
+  broadcast myStatus {
+      out {
+          Int32 myCurrentValue
+      }
+  }
+
+  enumeration EventType {
+    HEART_BEAT = 0
+    HB_RESTART = 1
+    RESET_REQUEST = 2
+  }
+}
