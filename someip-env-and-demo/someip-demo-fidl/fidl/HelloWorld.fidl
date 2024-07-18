@@ -35,4 +35,13 @@ interface HelloWorld {
     HB_RESTART = 1
     RESET_REQUEST = 2
   }
+  
+  method myByteBuffer {
+    in {
+      ByteBuffer indata
+    }
+    out {
+        ByteBuffer outdata
+    }
+  }
 }

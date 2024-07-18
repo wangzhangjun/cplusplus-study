@@ -215,6 +215,64 @@ std::future<CommonAPI::CallStatus> HelloWorldSomeIPProxy::sayGoodByeAsync(const 
         std::make_tuple(deploy_message));
 }
 
+void HelloWorldSomeIPProxy::myByteBuffer(CommonAPI::ByteBuffer _indata, CommonAPI::CallStatus &_internalCallStatus, CommonAPI::ByteBuffer &_outdata, const CommonAPI::CallInfo *_info) {
+    CommonAPI::Deployable< CommonAPI::ByteBuffer, CommonAPI::SomeIP::ByteBufferDeployment> deploy_indata(_indata, static_cast< CommonAPI::SomeIP::ByteBufferDeployment* >(nullptr));
+    CommonAPI::Deployable< CommonAPI::ByteBuffer, CommonAPI::SomeIP::ByteBufferDeployment> deploy_outdata(static_cast< CommonAPI::SomeIP::ByteBufferDeployment* >(nullptr));
+    CommonAPI::SomeIP::ProxyHelper<
+        CommonAPI::SomeIP::SerializableArguments<
+            CommonAPI::Deployable<
+                CommonAPI::ByteBuffer,
+                CommonAPI::SomeIP::ByteBufferDeployment
+            >
+        >,
+        CommonAPI::SomeIP::SerializableArguments<
+            CommonAPI::Deployable<
+                CommonAPI::ByteBuffer,
+                CommonAPI::SomeIP::ByteBufferDeployment
+            >
+        >
+    >::callMethodWithReply(
+        *this,
+        CommonAPI::SomeIP::method_id_t(0x315),
+        true,
+        false,
+        (_info ? _info : &CommonAPI::SomeIP::defaultCallInfo),
+        deploy_indata,
+        _internalCallStatus,
+        deploy_outdata);
+    _outdata = deploy_outdata.getValue();
+}
+
+std::future<CommonAPI::CallStatus> HelloWorldSomeIPProxy::myByteBufferAsync(const CommonAPI::ByteBuffer &_indata, MyByteBufferAsyncCallback _callback, const CommonAPI::CallInfo *_info) {
+    CommonAPI::Deployable< CommonAPI::ByteBuffer, CommonAPI::SomeIP::ByteBufferDeployment> deploy_indata(_indata, static_cast< CommonAPI::SomeIP::ByteBufferDeployment* >(nullptr));
+    CommonAPI::Deployable< CommonAPI::ByteBuffer, CommonAPI::SomeIP::ByteBufferDeployment> deploy_outdata(static_cast< CommonAPI::SomeIP::ByteBufferDeployment* >(nullptr));
+    return CommonAPI::SomeIP::ProxyHelper<
+        CommonAPI::SomeIP::SerializableArguments<
+            CommonAPI::Deployable<
+                CommonAPI::ByteBuffer,
+                CommonAPI::SomeIP::ByteBufferDeployment
+            >
+        >,
+        CommonAPI::SomeIP::SerializableArguments<
+            CommonAPI::Deployable<
+                CommonAPI::ByteBuffer,
+                CommonAPI::SomeIP::ByteBufferDeployment
+            >
+        >
+    >::callMethodAsync(
+        *this,
+        CommonAPI::SomeIP::method_id_t(0x315),
+        true,
+        false,
+        (_info ? _info : &CommonAPI::SomeIP::defaultCallInfo),
+        deploy_indata,
+        [_callback] (CommonAPI::CallStatus _internalCallStatus, CommonAPI::Deployable< CommonAPI::ByteBuffer, CommonAPI::SomeIP::ByteBufferDeployment > _outdata) {
+            if (_callback)
+                _callback(_internalCallStatus, _outdata.getValue());
+        },
+        std::make_tuple(deploy_outdata));
+}
+
 void HelloWorldSomeIPProxy::getOwnVersion(uint16_t& ownVersionMajor, uint16_t& ownVersionMinor) const {
     ownVersionMajor = 1;
     ownVersionMinor = 0;

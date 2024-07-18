@@ -65,6 +65,10 @@ public:
 
     virtual std::future<CommonAPI::CallStatus> sayGoodByeAsync(const std::string &_name, const uint64_t &_index, const HelloWorld::EventType &_eventType, SayGoodByeAsyncCallback _callback, const CommonAPI::CallInfo *_info);
 
+    virtual void myByteBuffer(CommonAPI::ByteBuffer _indata, CommonAPI::CallStatus &_internalCallStatus, CommonAPI::ByteBuffer &_outdata, const CommonAPI::CallInfo *_info);
+
+    virtual std::future<CommonAPI::CallStatus> myByteBufferAsync(const CommonAPI::ByteBuffer &_indata, MyByteBufferAsyncCallback _callback, const CommonAPI::CallInfo *_info);
+
     virtual void getOwnVersion(uint16_t &_major, uint16_t &_minor) const;
 
     virtual std::future<void> getCompletionFuture();

@@ -46,12 +46,15 @@ public:
 
     typedef std::function<void(const CommonAPI::CallStatus&, const std::string&)> SayHelloAsyncCallback;
     typedef std::function<void(const CommonAPI::CallStatus&, const std::string&)> SayGoodByeAsyncCallback;
+    typedef std::function<void(const CommonAPI::CallStatus&, const CommonAPI::ByteBuffer&)> MyByteBufferAsyncCallback;
 
     virtual void sayHello(std::string _name, uint64_t _index, HelloWorld::EventType _eventType, CommonAPI::CallStatus &_internalCallStatus, std::string &_message, const CommonAPI::CallInfo *_info = nullptr) = 0;
     virtual std::future<CommonAPI::CallStatus> sayHelloAsync(const std::string &_name, const uint64_t &_index, const HelloWorld::EventType &_eventType, SayHelloAsyncCallback _callback = nullptr, const CommonAPI::CallInfo *_info = nullptr) = 0;
     virtual void sayGoodBye(std::string _name, uint64_t _index, HelloWorld::EventType _eventType, CommonAPI::CallStatus &_internalCallStatus, std::string &_message, const CommonAPI::CallInfo *_info = nullptr) = 0;
     virtual std::future<CommonAPI::CallStatus> sayGoodByeAsync(const std::string &_name, const uint64_t &_index, const HelloWorld::EventType &_eventType, SayGoodByeAsyncCallback _callback = nullptr, const CommonAPI::CallInfo *_info = nullptr) = 0;
     virtual MyStatusEvent& getMyStatusEvent() = 0;
+    virtual void myByteBuffer(CommonAPI::ByteBuffer _indata, CommonAPI::CallStatus &_internalCallStatus, CommonAPI::ByteBuffer &_outdata, const CommonAPI::CallInfo *_info = nullptr) = 0;
+    virtual std::future<CommonAPI::CallStatus> myByteBufferAsync(const CommonAPI::ByteBuffer &_indata, MyByteBufferAsyncCallback _callback = nullptr, const CommonAPI::CallInfo *_info = nullptr) = 0;
 
     virtual std::future<void> getCompletionFuture() = 0;
 };

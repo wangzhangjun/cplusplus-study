@@ -72,6 +72,14 @@ public:
         std::tuple< CommonAPI::SomeIP::StringDeployment>
     > sayGoodByeStubDispatcher;
     
+    CommonAPI::SomeIP::MethodWithReplyStubDispatcher<
+        ::v1::commonapi::HelloWorldStub,
+        std::tuple< CommonAPI::ByteBuffer>,
+        std::tuple< CommonAPI::ByteBuffer>,
+        std::tuple< CommonAPI::SomeIP::ByteBufferDeployment>,
+        std::tuple< CommonAPI::SomeIP::ByteBufferDeployment>
+    > myByteBufferStubDispatcher;
+    
     HelloWorldSomeIPStubAdapterInternal(
         const CommonAPI::SomeIP::Address &_address,
         const std::shared_ptr<CommonAPI::SomeIP::ProxyConnection> &_connection,
@@ -97,9 +105,18 @@ public:
             std::make_tuple(static_cast< CommonAPI::SomeIP::StringDeployment* >(nullptr), static_cast< CommonAPI::SomeIP::IntegerDeployment<uint64_t>* >(nullptr), &::v1::commonapi::HelloWorld_::EventTypeDeployment),
             std::make_tuple(static_cast< CommonAPI::SomeIP::StringDeployment* >(nullptr)))
         
+        ,
+        myByteBufferStubDispatcher(
+            &HelloWorldStub::myByteBuffer,
+            false,
+            _stub->hasElement(3),
+            std::make_tuple(static_cast< CommonAPI::SomeIP::ByteBufferDeployment* >(nullptr)),
+            std::make_tuple(static_cast< CommonAPI::SomeIP::ByteBufferDeployment* >(nullptr)))
+        
     {
         HelloWorldSomeIPStubAdapterHelper::addStubDispatcher( { CommonAPI::SomeIP::method_id_t(0x7b) }, &sayHelloStubDispatcher );
         HelloWorldSomeIPStubAdapterHelper::addStubDispatcher( { CommonAPI::SomeIP::method_id_t(0x1c8) }, &sayGoodByeStubDispatcher );
+        HelloWorldSomeIPStubAdapterHelper::addStubDispatcher( { CommonAPI::SomeIP::method_id_t(0x315) }, &myByteBufferStubDispatcher );
         // Provided events/fields
         {
             std::set<CommonAPI::SomeIP::eventgroup_id_t> itsEventGroups;

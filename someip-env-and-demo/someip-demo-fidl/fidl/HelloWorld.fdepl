@@ -19,6 +19,11 @@ define org.genivi.commonapi.someip.deployment for interface commonapi.HelloWorld
         out {
         }
     }
+	
+	method myByteBuffer {
+        SomeIpMethodID = 789
+        SomeIpReliable = true
+    }
 }
 
 define org.genivi.commonapi.someip.deployment for provider as MyService {

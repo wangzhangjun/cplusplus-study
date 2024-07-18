@@ -116,6 +116,27 @@ public:
     virtual MyStatusEvent& getMyStatusEvent() {
         return delegate_->getMyStatusEvent();
     }
+    /**
+     * Calls myByteBuffer with synchronous semantics.
+     *
+     * All const parameters are input parameters to this method.
+     * All non-const parameters will be filled with the returned values.
+     * The CallStatus will be filled when the method returns and indicate either
+     * "SUCCESS" or which type of error has occurred. In case of an error, ONLY the CallStatus
+     * will be set.
+     */
+    virtual void myByteBuffer(CommonAPI::ByteBuffer _indata, CommonAPI::CallStatus &_internalCallStatus, CommonAPI::ByteBuffer &_outdata, const CommonAPI::CallInfo *_info = nullptr);
+    /**
+     * Calls myByteBuffer with asynchronous semantics.
+     *
+     * The provided callback will be called when the reply to this call arrives or
+     * an error occurs during the call. The CallStatus will indicate either "SUCCESS"
+     * or which type of error has occurred. In case of any error, ONLY the CallStatus
+     * will have a defined value.
+     * The std::future returned by this method will be fulfilled at arrival of the reply.
+     * It will provide the same value for CallStatus as will be handed to the callback.
+     */
+    virtual std::future<CommonAPI::CallStatus> myByteBufferAsync(const CommonAPI::ByteBuffer &_indata, MyByteBufferAsyncCallback _callback = nullptr, const CommonAPI::CallInfo *_info = nullptr);
 
 
 
@@ -178,6 +199,15 @@ std::future<CommonAPI::CallStatus> HelloWorldProxy<_AttributeExtensions...>::say
         return promise.get_future();
     }
     return delegate_->sayGoodByeAsync(_name, _index, _eventType, _callback, _info);
+}
+template <typename ... _AttributeExtensions>
+void HelloWorldProxy<_AttributeExtensions...>::myByteBuffer(CommonAPI::ByteBuffer _indata, CommonAPI::CallStatus &_internalCallStatus, CommonAPI::ByteBuffer &_outdata, const CommonAPI::CallInfo *_info) {
+    delegate_->myByteBuffer(_indata, _internalCallStatus, _outdata, _info);
+}
+
+template <typename ... _AttributeExtensions>
+std::future<CommonAPI::CallStatus> HelloWorldProxy<_AttributeExtensions...>::myByteBufferAsync(const CommonAPI::ByteBuffer &_indata, MyByteBufferAsyncCallback _callback, const CommonAPI::CallInfo *_info) {
+    return delegate_->myByteBufferAsync(_indata, _callback, _info);
 }
 
 template <typename ... _AttributeExtensions>

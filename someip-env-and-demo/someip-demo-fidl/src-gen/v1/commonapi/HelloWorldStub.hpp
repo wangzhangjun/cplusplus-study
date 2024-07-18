@@ -99,11 +99,12 @@ class HelloWorldStub
 public:
     typedef std::function<void (std::string _message)> sayHelloReply_t;
     typedef std::function<void (std::string _message)> sayGoodByeReply_t;
+    typedef std::function<void (CommonAPI::ByteBuffer _outdata)> myByteBufferReply_t;
 
     virtual ~HelloWorldStub() {}
     void lockInterfaceVersionAttribute(bool _lockAccess) { static_cast<void>(_lockAccess); }
     bool hasElement(const uint32_t _id) const {
-        return (_id < 3);
+        return (_id < 4);
     }
     virtual const CommonAPI::Version& getInterfaceVersion(std::shared_ptr<CommonAPI::ClientId> _client) = 0;
 
@@ -117,6 +118,8 @@ public:
         if (stubAdapter)
             stubAdapter->fireMyStatusEvent(_myCurrentValue);
     }
+    /// This is the method that will be called on remote calls on the method myByteBuffer.
+    virtual void myByteBuffer(const std::shared_ptr<CommonAPI::ClientId> _client, CommonAPI::ByteBuffer _indata, myByteBufferReply_t _reply) = 0;
 
 
     using CommonAPI::Stub<HelloWorldStubAdapter, HelloWorldStubRemoteEvent>::initStubAdapter;

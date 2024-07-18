@@ -11,5 +11,7 @@ public:
     void incCounter();
     virtual void sayHello(const std::shared_ptr<CommonAPI::ClientId> _client,   std::string _name, uint64_t _index, v1::commonapi::HelloWorld::EventType _eventType, sayHelloReply_t _return);
     virtual void sayGoodBye(const std::shared_ptr<CommonAPI::ClientId> _client, std::string _name, uint64_t _index, v1::commonapi::HelloWorld::EventType _eventType, sayGoodByeReply_t _return);
+    virtual void myByteBuffer(const std::shared_ptr<CommonAPI::ClientId> _client, CommonAPI::ByteBuffer _indata, myByteBufferReply_t _reply);
+
 };
 #endif /* HELLOWORLDSTUBIMPL_H_ */
