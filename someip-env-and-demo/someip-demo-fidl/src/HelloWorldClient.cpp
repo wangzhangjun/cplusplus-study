@@ -33,7 +33,11 @@ int main() {
     std::cout << "Got message after sayGoodBye: '" << returnMessage << "'\n";
 
     // byteBuffer test
-    CommonAPI::ByteBuffer indata = {88, 77, 78, 34};
+    // 可以使用std::vector来构造ByteBuffer， 它本质就是一个typedef std::vector<uint8_t> ByteBuffer;
+
+    std::vector<uint8_t> testdata = {11, 22, 33, 44};
+    // CommonAPI::ByteBuffer indata = {88, 77, 78, 34};
+    CommonAPI::ByteBuffer indata(testdata.begin(), testdata.end());
     CommonAPI::ByteBuffer outdata = {};
     myProxy->myByteBuffer(indata, callStatus, outdata);
     if (callStatus == CommonAPI::CallStatus::SUCCESS) {
