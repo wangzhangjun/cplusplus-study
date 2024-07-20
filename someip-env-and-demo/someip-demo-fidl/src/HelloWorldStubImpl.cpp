@@ -36,6 +36,17 @@ void HelloWorldStubImpl::sayGoodBye(const std::shared_ptr<CommonAPI::ClientId> _
 void HelloWorldStubImpl::myByteBuffer(const std::shared_ptr<CommonAPI::ClientId> _client, CommonAPI::ByteBuffer _indata, myByteBufferReply_t _reply) {
 	
 	std::cout << "in service myByteBuffer get indata:" << std::endl;
+
+	//构造一个vector
+	// 获取指向数据的指针
+        const uint8_t* dataPtr = _indata.data();
+        size_t dataSize = _indata.size();
+        // 创建并填充 std::vector
+        std::vector<uint8_t> result(dataPtr, dataPtr + dataSize);
+	for(uint8_t elm : result) {
+		std::cout << "elm:" << static_cast<int>(elm) << std::endl;
+	}
+	std::cout << "receive size:" << result.size() << std::endl;
 	
 	for (uint8_t i = 0; i < _indata.size(); i++) {
 		// 注意直接打印_indata[i]是不行的，因为uint8_t实际上是 unsigned char，直接打印时会被解释为字符而不是数字
