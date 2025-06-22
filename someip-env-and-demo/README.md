@@ -1,5 +1,8 @@
 ### 环境搭建
+```
 docker build -t someipimage-latest  -f ./Dockerfile .
+
+```
 启动一个容器。
 
 编译demo工程：
