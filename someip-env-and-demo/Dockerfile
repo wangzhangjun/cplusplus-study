@@ -49,6 +49,9 @@ RUN cd /root/vsomeip-build/capicxx-someip-tools/org.genivi.commonapi.someip.rele
     unzip -d /usr/local/bin/commonapi-someip-generator /root/vsomeip-build/capicxx-someip-tools/org.genivi.commonapi.someip.cli.product/target/products/commonapi_someip_generator.zip && \
     chmod +x /usr/local/bin/commonapi-someip-generator/commonapi-someip-generator-linux-x86_64
 
+# 修复capicxx-core-runtime的Types.hpp文件缺少string头文件的问题
+RUN sed -i '/^#include <memory>$/a #include <string>' /root/vsomeip-build/capicxx-core-runtime/include/CommonAPI/Types.hpp
+
 RUN cd /root/vsomeip-build/vsomeip && \
     rm -rf build && mkdir -p build && cd build && \
     cmake -D ENABLE_SIGNAL_HANDLING=1 -D CMAKE_INSTALL_PREFIX=/usr .. && \

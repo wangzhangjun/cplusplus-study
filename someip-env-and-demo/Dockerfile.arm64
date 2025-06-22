@@ -1,0 +1,118 @@
+FROM ubuntu:latest
+
+# 显式设置平台架构
+ENV DEBIAN_FRONTEND=noninteractive
+ENV TARGETARCH=arm64
+
+RUN apt-get update && apt-get install -y \
+    gcc build-essential \
+    software-properties-common \
+    cmake \
+    git \
+    libsystemd-dev \
+    graphviz \
+    vim \
+    curl \
+    net-tools \
+    inetutils-ping \
+    wget \
+    gdb  \
+    sudo \
+    tcpdump  \
+    apt-utils \
+    unzip unrar \
+    libboost-all-dev \
+    maven \
+    && rm -rf /var/lib/apt/lists/*
+
+# 安装Java 8，针对ARM64架构
+RUN add-apt-repository -y ppa:openjdk-r/ppa && \
+    apt-get update && \
+    apt-get install -y openjdk-8-jdk && \
+    update-java-alternatives -s java-1.8.0-openjdk-arm64 && \
+    rm -rf /var/lib/apt/lists/*
+
+# 设置JAVA_HOME环境变量
+ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-arm64
+
+# 创建构建目录并克隆仓库
+RUN mkdir -p /root/vsomeip-build && \
+    cd /root/vsomeip-build && \
+    git clone https://github.com/GENIVI/capicxx-core-runtime.git && \
+    git clone https://github.com/GENIVI/capicxx-core-tools.git && \
+    git clone https://github.com/GENIVI/capicxx-someip-runtime.git && \
+    git clone https://github.com/GENIVI/capicxx-someip-tools.git && \
+    git clone https://github.com/GENIVI/vsomeip.git
+
+# 构建CommonAPI核心工具
+RUN cd /root/vsomeip-build/capicxx-core-tools/org.genivi.commonapi.core.releng && \
+    mvn -Dtarget.id=org.genivi.commonapi.core.target clean verify && \
+    mkdir -p /usr/local/bin/commonapi-generator && \
+    unzip -d /usr/local/bin/commonapi-generator /root/vsomeip-build/capicxx-core-tools/org.genivi.commonapi.core.cli.product/target/products/commonapi_core_generator.zip
+
+# 检查并设置正确的可执行文件权限（自动检测架构）
+RUN cd /usr/local/bin/commonapi-generator && \
+    if [ -f "commonapi-core-generator-linux-aarch64" ]; then \
+        chmod +x commonapi-core-generator-linux-aarch64; \
+        ln -sf commonapi-core-generator-linux-aarch64 commonapi-core-generator; \
+    elif [ -f "commonapi-core-generator-linux-x86_64" ]; then \
+        chmod +x commonapi-core-generator-linux-x86_64; \
+        ln -sf commonapi-core-generator-linux-x86_64 commonapi-core-generator; \
+    else \
+        find . -name "commonapi-core-generator*" -type f -exec chmod +x {} \; ; \
+        find . -name "commonapi-core-generator*" -type f | head -1 | xargs -I {} ln -sf {} commonapi-core-generator; \
+    fi
+
+# 构建CommonAPI SomeIP工具
+RUN cd /root/vsomeip-build/capicxx-someip-tools/org.genivi.commonapi.someip.releng && \
+    mvn clean verify -DCOREPATH=/root/vsomeip-build/capicxx-core-tools -Dtarget.id=org.genivi.commonapi.someip.target && \
+    mkdir -p /usr/local/bin/commonapi-someip-generator && \
+    unzip -d /usr/local/bin/commonapi-someip-generator /root/vsomeip-build/capicxx-someip-tools/org.genivi.commonapi.someip.cli.product/target/products/commonapi_someip_generator.zip
+
+# 检查并设置正确的SomeIP工具可执行文件权限（自动检测架构）
+RUN cd /usr/local/bin/commonapi-someip-generator && \
+    if [ -f "commonapi-someip-generator-linux-aarch64" ]; then \
+        chmod +x commonapi-someip-generator-linux-aarch64; \
+        ln -sf commonapi-someip-generator-linux-aarch64 commonapi-someip-generator; \
+    elif [ -f "commonapi-someip-generator-linux-x86_64" ]; then \
+        chmod +x commonapi-someip-generator-linux-x86_64; \
+        ln -sf commonapi-someip-generator-linux-x86_64 commonapi-someip-generator; \
+    else \
+        find . -name "commonapi-someip-generator*" -type f -exec chmod +x {} \; ; \
+        find . -name "commonapi-someip-generator*" -type f | head -1 | xargs -I {} ln -sf {} commonapi-someip-generator; \
+    fi
+
+# 构建vsomeip和运行时库
+RUN cd /root/vsomeip-build/vsomeip && \
+    rm -rf build && mkdir -p build && cd build && \
+    cmake -D ENABLE_SIGNAL_HANDLING=1 -D CMAKE_INSTALL_PREFIX=/usr .. && \
+    make -j$(nproc) && make install && \
+    ldconfig
+
+# 修复capicxx-core-runtime的Types.hpp文件缺少string头文件的问题
+RUN sed -i '/^#include <memory>$/a #include <string>' /root/vsomeip-build/capicxx-core-runtime/include/CommonAPI/Types.hpp
+
+# 构建capicxx-core-runtime
+RUN cd /root/vsomeip-build/capicxx-core-runtime && \
+    rm -rf build && mkdir -p build && cd build && \
+    cmake -D CMAKE_INSTALL_PREFIX=/usr .. && \
+    make -j$(nproc) && make install && \
+    ldconfig
+
+# 构建capicxx-someip-runtime
+RUN cd /root/vsomeip-build/capicxx-someip-runtime && \
+    rm -rf build && mkdir -p build && cd build && \
+    cmake -D USE_INSTALLED_COMMONAPI=ON -D CMAKE_INSTALL_PREFIX=/usr .. && \
+    make -j$(nproc) && make install && \
+    ldconfig
+
+# 设置PATH环境变量
+ENV PATH="/usr/local/bin/commonapi-generator:/usr/local/bin/commonapi-someip-generator/:${PATH}"
+
+# 创建工作目录
+WORKDIR /workspace
+
+# 清理不必要的文件以减小镜像大小
+# RUN apt-get clean && \
+#     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
+#     rm -rf /root/vsomeip-build/*/build 
