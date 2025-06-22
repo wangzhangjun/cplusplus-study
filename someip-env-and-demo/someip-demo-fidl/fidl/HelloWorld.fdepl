@@ -1,7 +1,22 @@
 import "platform:/plugin/org.genivi.commonapi.someip/deployment/CommonAPI-SOMEIP_deployment_spec.fdepl"
 import "HelloWorld.fidl"
 
+// commonapi 是指的是fidl的package
+// HelloWorld 指的是fidl的interface
 define org.genivi.commonapi.someip.deployment for interface commonapi.HelloWorld {
+
+	/*
+	这个SomeIpServiceID 在我们的代码中不用，但是是在生成的代码中做了唯一标识。
+	可以在HelloWorldSomeIPStubAdapter.cpp 看到：
+	CommonAPI::SomeIP::AddressTranslator::get()->insert(
+		"local:commonapi.HelloWorld:v1_0:test",  // CommonAPI 地址字符串
+		0x1234,  // Service ID (SomeIpServiceID = 4660)
+		0x5678,  // Instance ID (SomeIpInstanceID = 22136) 
+		1,       // Major version
+		0        // Minor version
+	);
+	这个函数建立了 CommonAPI 高层地址（如 "local:commonapi.HelloWorld:v1_0:test"）与底层 SOME/IP 地址（Service ID + Instance ID）之间的映射关系。
+	*/
 	SomeIpServiceID = 4660
 
 	method sayHello {
@@ -26,9 +41,22 @@ define org.genivi.commonapi.someip.deployment for interface commonapi.HelloWorld
     }
 }
 
-define org.genivi.commonapi.someip.deployment for provider as MyService {
+define org.genivi.commonapi.someip.deployment for provider as MyService {  // MyService只是标识，写代码时候不用
 	instance commonapi.HelloWorld {
-		InstanceId = "test"
+		InstanceId = "test" // 这个是唯一的，要在client的代码种要指定
 		SomeIpInstanceID = 22136
+	}
+}
+
+/*
+这里是为了验证，一个interface可以是多个instance。 
+但是如果你是在一个进程的话，没有必要，就用一个方法去做区分
+如果是两个Instance的话，可以考虑放在不同的进程种去
+要区分不同的instance的话，需要在Stub中的构造传进去
+*/ 
+define org.genivi.commonapi.someip.deployment for provider as MyService2 { //MyService2只是标识，写代码时候不用
+	instance commonapi.HelloWorld {
+		InstanceId = "test2" // 这个是唯一的，要在client的代码种要指定
+		SomeIpInstanceID = 22137
 	}
 }

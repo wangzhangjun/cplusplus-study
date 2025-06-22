@@ -16,12 +16,24 @@ void handleStatusEvent(const int32_t& val) {
 int main() {
     std::shared_ptr < CommonAPI::Runtime > runtime = CommonAPI::Runtime::get();
     std::shared_ptr<HelloWorldProxy<>> myProxy = runtime->buildProxy<HelloWorldProxy>("local", "test");  // test是InstanceId,
+    std::shared_ptr<HelloWorldProxy<>> myProxy2 = runtime->buildProxy<HelloWorldProxy>("local", "test2");  // test2是InstanceId,
 
     std::cout << "Checking availability!" << std::endl;
     while (!myProxy->isAvailable()) {
         std::cout <<  "Service is not Available..."  << std::endl;
         usleep(200000);
     }
+
+    while (!myProxy2->isAvailable()) {
+        std::cout <<  "Service2 is not Available..."  << std::endl;
+        usleep(200000);
+    }
+
+    //test service2
+    CommonAPI::CallStatus callStatus2;
+    std::string returnMessage2;
+    myProxy2->sayHello("Zhjwang", 123 , HelloWorld::EventType::HEART_BEAT, callStatus2, returnMessage2);
+    std::cout << "Got message after sayHello: '" << returnMessage2 << "'\n";
 
     std::cout << "Available..." << std::endl;
     CommonAPI::CallStatus callStatus;

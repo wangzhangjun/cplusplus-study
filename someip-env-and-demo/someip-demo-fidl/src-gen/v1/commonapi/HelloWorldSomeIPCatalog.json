@@ -4,5 +4,11 @@
         "instances" : {
             "test": 22136
         }
+    },
+    "commonapi.HelloWorld" : {
+        "service_id": 4660,
+        "instances" : {
+            "test2": 22137
+        }
     }
 }
